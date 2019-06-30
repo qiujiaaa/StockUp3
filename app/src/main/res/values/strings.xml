@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">StockUp!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="not_registered">Not Registered?</string>
+    <string name="register_here">Register here</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_username">Username</string>
+    <string name="register">Register</string>
+    <string name="already_registered">Already Registered?</string>
+    <string name="login_here">Login here</string>
+    <string name="new_password">Password</string>
+    <string name="buyer">Buyer</string>
+    <string name="runner">Runner</string>
+    <string name="role">Choose only ONE of the options.</string>
+
+    <string name="new_email">Email</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_brand">Item Brand</string>
+    <string name="item_price">Price</string>
+    <string name="item_list_name">Shop</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="order">Order</string>
+    <string name="status">Status:</string>
+    <string name="order_number">order no.</string>
+    <string name="current_status">current status</string>
+    <string name="Date">DD/MM/YY</string>
+    <string name="payment_method">Select payment method:</string>
+    <string name="cash">Cash</string>
+    <string name="mobile_wallets">Mobile Wallets (Eg DBS Paylah!, PayNow, OCBC Pay Anyone etc.)</string>
+    <string name="bank_transfer">Bank Transfer</string>
+
+    // Profile page
+    <string name="directory_groceries">My Groceries</string>
+    <string name="directory_shopping_list">My Shopping List</string>
+    <string name="directory_orders">My Orders</string>
+    <string name="directory_bookmarks">My Bookmarks</string>
+    <string name="directory_settings">Profile Settings</string>
+    <string name="directory_wallet">My Wallet</string>
+    <string name="directory_decide">DECIDE</string>
+    <string name="searchview_hint">Search item</string>
+    <string name="directory_assignments">My Assignments</string>
+    <string name="directory_completed">Completed</string>
+    <string name="wallet_add_payment">Add Payment Method</string>
+    <string name="wallet_remove_payment">Remove Payment Method</string>
+</resources>

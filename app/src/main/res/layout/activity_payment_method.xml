@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentMethod">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff6968"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Payment_Method"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/payment_method"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="65dp" />
+
+        <TextView
+            android:id="@+id/Subtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(You may select more than one)" />
+
+        <CheckBox
+            android:id="@+id/checkBoxCash"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:text="@string/cash"
+            app:layout_constraintEnd_toEndOf="@+id/Payment_Method"
+            app:layout_constraintStart_toStartOf="@+id/Payment_Method"
+            tools:layout_editor_absoluteY="97dp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxMobileWallets"
+            android:layout_width="263dp"
+            android:layout_height="35dp"
+            android:text="@string/mobile_wallets"
+            app:layout_constraintStart_toStartOf="@+id/Payment_Method"
+            tools:layout_editor_absoluteY="129dp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBankTransfer"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:text="@string/bank_transfer"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="164dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

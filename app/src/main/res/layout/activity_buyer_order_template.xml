@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyerOrderTemplate">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Order"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/order"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="65dp" />
+
+            <TextView
+                android:id="@+id/Status"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/status"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@+id/Order"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/Order"
+                app:layout_constraintTop_toBottomOf="@+id/Order" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_weight="1.9"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Order_Number"
+                android:layout_width="73dp"
+                android:layout_height="20dp"
+                android:text="@string/order_number"
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="65dp" />
+
+            <TextView
+                android:id="@+id/Status_Of_Order"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/current_status"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@+id/Order_Number"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/Order_Number"
+                app:layout_constraintTop_toBottomOf="@+id/Order_Number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Order_Date"
+                android:layout_width="101dp"
+                android:layout_height="20dp"
+                android:text="@string/Date"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="65dp" />
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="101dp"
+                android:layout_height="20dp"
+                android:text="@string/item_price"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@+id/Order_Date"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/Order_Date"
+                app:layout_constraintTop_toBottomOf="@+id/Order_Date" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

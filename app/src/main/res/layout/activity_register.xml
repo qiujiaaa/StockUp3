@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/ic_launcher_foreground"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/role"/>
+
+        <CheckBox
+            android:id="@+id/buyer"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/buyer" />
+
+        <CheckBox
+            android:id="@+id/runner"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/runner" />
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edittext_new_email"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/new_email" />
+
+    <EditText
+        android:id="@+id/edittext_new_username"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/new_username" />
+
+    <EditText
+        android:id="@+id/edittext_new_password"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/new_password"/>
+
+    <EditText
+        android:id="@+id/edittext_confirm_password"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/confirm_password"/>
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#e99f33"
+        android:text="@string/register"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:text="@string/already_registered" />
+
+        <TextView
+            android:id="@+id/textview_login_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="5dp"
+            android:textStyle="bold"
+            android:text="@string/login_here"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+</LinearLayout>

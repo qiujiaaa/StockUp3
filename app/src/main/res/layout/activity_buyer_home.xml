@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyerHome"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:background="#ff6968"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/buyer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:textSize="30sp"
+                android:gravity="center_horizontal"
+                android:text="Hello"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/default_pfp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="360dp"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="240dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/directory_groceries"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/directory_groceries"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/directory_groceries"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/directory_shopping_list"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/directory_shopping_list"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/directory_shopping_list"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/directory_orders"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/directory_orders"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/directory_orders"
+                        android:textSize="15sp"
+                        android:textColor="#000000"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/directory_Bbookmarks"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/directory_bookmarks" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:text="@string/directory_bookmarks"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/directory_Bundecided"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/directory_bookmarks" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:text="@string/directory_decide"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/directory_Bwallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/directory_wallet" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:text="@string/directory_wallet"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/directory_Bsettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/directory_settings" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:text="@string/directory_settings"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_shopping"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        app:backgroundTint="#ff6968"
+        app:srcCompat="@drawable/shopping_button" />
+
+
+</LinearLayout>
