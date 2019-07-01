@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ItemListActivity extends AppCompatActivity {
@@ -76,7 +77,7 @@ public class ItemListActivity extends AppCompatActivity {
                             if(email.equals(theEmail)) {
                                 User user = itemSnapShot.getValue(User.class);
                                 user.getMyShoppingList().add(new Groceries(chosenItem, 1));
-                                Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ItemListActivity.this, "Added", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         }
@@ -113,6 +114,7 @@ public class ItemListActivity extends AppCompatActivity {
                     itemList.add(new Item(itemName, itemBrand, itemPrice, itemInfo));
                 }
 
+                Collections.sort(itemList, new ItemsComparator());
                 ItemList adapter = new ItemList(ItemListActivity.this, itemList);
                 myListViewItems.setAdapter(adapter);
             }
