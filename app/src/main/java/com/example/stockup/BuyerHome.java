@@ -83,7 +83,8 @@ public class BuyerHome extends AppCompatActivity {
         myGroceries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToGroceries  = new Intent(BuyerHome.this, BuyerGroceriesActivity.class);
+                startActivity(goToGroceries);
             }
         });
 
@@ -91,7 +92,7 @@ public class BuyerHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent goToShoppingList  = new Intent(BuyerHome.this, BuyerMyShoppingListActivity.class);
+                Intent goToShoppingList  = new Intent(BuyerHome.this, BuyerShoppingListActivity.class);
                 startActivity(goToShoppingList);
 
             }

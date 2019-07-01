@@ -39,6 +39,15 @@
             android:paddingTop="5dp"/>
 
         <TextView
+            android:id="@+id/add_item_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"/>
+
+        <TextView
             android:id="@+id/add_item_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +69,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Add to Shopping List"
+                android:text="Add to
+                Shopping List"
                 android:textSize="20sp"
                 android:backgroundTint="#a2b5e3" />
 
@@ -69,7 +79,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Add to Groceries"
+                android:text="Add to
+                Groceries List"
                 android:textSize="20sp"
                 android:backgroundTint="#ff6867" />
 

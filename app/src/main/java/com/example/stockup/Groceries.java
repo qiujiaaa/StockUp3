@@ -1,15 +1,19 @@
 package com.example.stockup;
 
-public class Groceries {
+import java.io.Serializable;
+
+public class Groceries implements Serializable {
 
     Item item;
     int quantity;
+    String usagePeriod;
 
     public Groceries() {}
 
-    public Groceries(Item item, int quantity) {
+    public Groceries(Item item, int quantity, String usagePeriod) {
         this.item = item;
         this.quantity = quantity;
+        this.usagePeriod = usagePeriod;
     }
 
     protected Item getItem() {
@@ -19,6 +23,8 @@ public class Groceries {
     protected int getQuantity() {
         return quantity;
     }
+
+    public String getUsagePeriod() { return usagePeriod; }
 
     public String getName() {
         return item.getName();

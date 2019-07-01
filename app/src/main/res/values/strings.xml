@@ -33,7 +33,7 @@
     <string name="bank_transfer">Bank Transfer</string>
 
     // Profile page
-    <string name="directory_groceries">My Groceries</string>
+    <string name="directory_groceries">Groceries List</string>
     <string name="directory_shopping_list">My Shopping List</string>
     <string name="directory_orders">My Orders</string>
     <string name="directory_bookmarks">My Bookmarks</string>
