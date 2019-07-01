@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyerMyShoppingListActivity extends AppCompatActivity {
+public class BuyerShoppingListActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -51,13 +51,13 @@ public class BuyerMyShoppingListActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
 
-                /*for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
+                for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
                     String email = itemSnapShot.child("email").getValue().toString();
                     if(email.equals(theEmail)) {
                         DataSnapshot newDS = itemSnapShot.child("myShoppingList");
-
                         for (DataSnapshot ds: newDS.getChildren()) {
                             String name = ds.child("name").getValue().toString();
+                            list.add(ds.getValue(Groceries.class));
                             if (!name.equals("a")) {
                                 list.add(ds.getValue(Groceries.class));
                             }
@@ -66,12 +66,8 @@ public class BuyerMyShoppingListActivity extends AppCompatActivity {
 
                         break;
                     }
-                } */
-                list.add(new Groceries(new Item("a", "b", 1.0, "c"), 10));
-                list.add(new Groceries(new Item("ab", "b", 1.0, "c"), 10));
-                list.add(new Groceries(new Item("az", "b", 1.0, "c"), 10));
-                list.add(new Groceries(new Item("ae", "b", 1.0, "c"), 10));
-                BuyerShoppingList adapter = new BuyerShoppingList(BuyerMyShoppingListActivity.this, list);
+                }
+                BuyerShoppingList adapter = new BuyerShoppingList(BuyerShoppingListActivity.this, list);
                 myListView.setAdapter(adapter);
 
             }

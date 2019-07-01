@@ -39,10 +39,12 @@
     <string name="directory_bookmarks">My Bookmarks</string>
     <string name="directory_settings">Profile Settings</string>
     <string name="directory_wallet">My Wallet</string>
-    <string name="directory_decide">DECIDE</string>
+    <string name="directory_address">My Address</string>
     <string name="searchview_hint">Search item</string>
     <string name="directory_assignments">My Assignments</string>
     <string name="directory_completed">Completed</string>
     <string name="wallet_add_payment">Add Payment Method</string>
     <string name="wallet_remove_payment">Remove Payment Method</string>
+    <string name="my_shopping_list">Shopping List</string>
+    <string name="buyer_my_groceries">My Groceries</string>
 </resources>

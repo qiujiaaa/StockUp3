@@ -11,6 +11,8 @@ public class User {
     List<Groceries> myShoppingList;
     List<Groceries> myGroceries;
 
+    public User() {}
+
     public User(String username, String email, String role) {
         this.username = username;
         this.email = email;
@@ -36,4 +38,8 @@ public class User {
     public List<Groceries> getMyShoppingList() { return myShoppingList; }
 
     public List<Groceries> getMyGroceries() { return myGroceries; }
+
+    public void addNewShopping(Groceries g) {
+        myShoppingList.add(g);
+    }
 }

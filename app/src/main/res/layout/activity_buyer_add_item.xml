@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyerAddItemActivity"
+    android:weightSum="2"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/temp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/add_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/item_name"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/add_item_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@string/item_brand"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"/>
+
+        <TextView
+            android:id="@+id/add_item_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/item_price"
+            android:paddingLeft="10dp"
+            android:textColor="#ff0c0b"
+            android:paddingTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingTop="5dp">
+
+            <Button
+                android:id="@+id/add_item_shopping"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Add to Shopping List"
+                android:textSize="20sp"
+                android:backgroundTint="#a2b5e3" />
+
+            <Button
+                android:id="@+id/add_item_groceries"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Add to Groceries"
+                android:textSize="20sp"
+                android:backgroundTint="#ff6867" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

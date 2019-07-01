@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/ic_launcher_foreground"/>
+        app:srcCompat="@drawable/login_icon"/>
 
 
     <EditText
@@ -34,7 +34,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="#e99f33"
+        android:background="#fcb1db"
         android:text="@string/login"/>
     
     <LinearLayout

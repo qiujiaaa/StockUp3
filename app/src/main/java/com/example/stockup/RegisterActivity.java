@@ -88,8 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         } else {
                                             newUser = new User(theUser, theEmail, "runner");
                                         }
-                                        String id = databaseRef.push().getKey();
-                                        databaseRef.child(id).setValue(newUser);
+                                        databaseRef.child(theUser).setValue(newUser);
                                         Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                         Intent loginIntent = new Intent(RegisterActivity.this, MainActivity.class);
                                         startActivity(loginIntent);

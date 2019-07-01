@@ -26,7 +26,7 @@ public class BuyerHome extends AppCompatActivity {
     LinearLayout myOrders;
     LinearLayout myBookmarks;
     LinearLayout myWallet;
-    LinearLayout myUNDECIDED;
+    LinearLayout myAddress;
     LinearLayout mySettings;
     FloatingActionButton myButtonShopping;
 
@@ -76,7 +76,7 @@ public class BuyerHome extends AppCompatActivity {
         myOrders = (LinearLayout) findViewById(R.id.directory_orders);
         myBookmarks = (LinearLayout) findViewById(R.id.directory_Bbookmarks);
         myWallet = (LinearLayout) findViewById(R.id.directory_Bwallet);
-        myUNDECIDED = (LinearLayout) findViewById(R.id.directory_Bundecided);
+        myAddress = (LinearLayout) findViewById(R.id.directory_Baddress);
         mySettings = (LinearLayout) findViewById(R.id.directory_Bsettings);
         myButtonShopping = (FloatingActionButton) findViewById(R.id.button_shopping);
 
@@ -112,7 +112,7 @@ public class BuyerHome extends AppCompatActivity {
             }
         });
 
-        myUNDECIDED.setOnClickListener(new View.OnClickListener() {
+        myAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -150,7 +150,7 @@
 
         <LinearLayout
             android:clickable="true"
-            android:id="@+id/directory_Bundecided"
+            android:id="@+id/directory_Baddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
-                android:text="@string/directory_decide"
+                android:text="@string/directory_address"
                 android:textSize="20sp" />
 
             <ImageView

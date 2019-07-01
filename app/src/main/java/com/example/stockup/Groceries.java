@@ -1,12 +1,13 @@
 package com.example.stockup;
 
-public class Groceries extends Item {
+public class Groceries {
 
     Item item;
     int quantity;
 
+    public Groceries() {}
+
     public Groceries(Item item, int quantity) {
-        super(item);
         this.item = item;
         this.quantity = quantity;
     }
@@ -17,6 +18,22 @@ public class Groceries extends Item {
 
     protected int getQuantity() {
         return quantity;
+    }
+
+    public String getName() {
+        return item.getName();
+    }
+
+    public String getBrand() {
+        return item.getBrand();
+    }
+
+    public double getPrice() {
+        return item.getPrice();
+    }
+
+    public String getAddInfo() {
+        return item.getAddInfo();
     }
 
     protected void increaseQuantity() {

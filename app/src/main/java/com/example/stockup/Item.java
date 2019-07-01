@@ -1,6 +1,8 @@
 package com.example.stockup;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
 
     String name;
     String brand;
@@ -14,12 +16,7 @@ public class Item {
         this.addInfo = addInfo;
     }
 
-    protected Item (Item item) {
-        this.name = item.name;
-        this.brand = item.brand;
-        this.price = item.price;
-        this.addInfo = item.addInfo;
-    }
+    protected Item () { }
 
     public String getName() {
         return name;
@@ -32,7 +29,6 @@ public class Item {
     public double getPrice() {
         return price;
     }
-
 
     public String getAddInfo() {
         return addInfo;

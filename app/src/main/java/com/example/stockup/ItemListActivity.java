@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -63,32 +64,11 @@ public class ItemListActivity extends AppCompatActivity {
 
         myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-                final Item chosenItem = (Item) adapter.getItemAtPosition(position);
-
-                final String theEmail = user.getEmail();
-                dataBaseItems.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        itemList.clear();
-
-                        for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
-                            String email = itemSnapShot.child("email").getValue().toString();
-                            if(email.equals(theEmail)) {
-                                User user = itemSnapShot.getValue(User.class);
-                                user.getMyShoppingList().add(new Groceries(chosenItem, 1));
-                                Toast.makeText(ItemListActivity.this, "Added", Toast.LENGTH_SHORT).show();
-                                break;
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
+            public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
+            Item chosenItem = (Item) adapter.getItemAtPosition(position);
+            Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
+            goToAddPage.putExtra("item", chosenItem);
+            startActivity(goToAddPage);
             }
         });
     }

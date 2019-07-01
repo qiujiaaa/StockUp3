@@ -12,12 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".BuyerShoppingList"></activity>
-        <activity android:name=".BuyerMyShoppingListActivity" />
+        <activity android:name=".BuyerAddItemActivity"></activity>
+        <activity android:name=".BuyerShoppingList" />
         <activity android:name=".PaymentMethod" />
         <activity android:name=".BuyerOrderTemplate" />
         <activity android:name=".BuyerMyOrders" />
-        <activity android:name=".ItemWithoutPrice" />
         <activity android:name=".BuyerMyGroceries" />
         <activity android:name=".WalletActivity" />
         <activity android:name=".RunnerHome" />
