@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BuyerShoppingListActivity"
+    tools:context=".BuyerOrderActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/my_shopping_list"
+        android:text="@string/buyer_orders"
         android:textSize="40sp"
         android:textStyle="bold"
         android:paddingLeft="10dp"/>
@@ -18,7 +18,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/buyer_shopping_list"
+        android:id="@+id/buyer_my_orders"
         android:paddingTop="10dp">
 
     </ListView>

@@ -25,7 +25,6 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
     List<Groceries> list;
     ListView myListView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

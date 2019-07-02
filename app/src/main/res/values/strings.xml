@@ -42,9 +42,10 @@
     <string name="directory_address">My Address</string>
     <string name="searchview_hint">Search item</string>
     <string name="directory_assignments">My Assignments</string>
-    <string name="directory_completed">Completed</string>
+    <string name="directory_completed">Completed Assignments</string>
     <string name="wallet_add_payment">Add Payment Method</string>
     <string name="wallet_remove_payment">Remove Payment Method</string>
     <string name="my_shopping_list">Shopping List</string>
     <string name="buyer_my_groceries">My Groceries</string>
+    <string name="buyer_orders">My Orders</string>
 </resources>

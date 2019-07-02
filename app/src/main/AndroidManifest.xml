@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".BuyerAddToShoppingListActivity"></activity>
+        <activity android:name=".BuyerAddressActivity"></activity>
+        <activity android:name=".BuyerOrderActivity" />
+        <activity android:name=".BuyerAddToShoppingListActivity" />
         <activity android:name=".BuyerAddToGroceriesActivity" />
         <activity android:name=".BuyerGroceriesActivity" />
         <activity android:name=".BuyerAddItemActivity" />
