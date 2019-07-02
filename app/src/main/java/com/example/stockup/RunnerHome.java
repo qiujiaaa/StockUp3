@@ -81,7 +81,8 @@ public class RunnerHome extends AppCompatActivity {
         myAssignments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToAssignments = new Intent(RunnerHome.this, RunnerAssignmentActivity.class);
+                startActivity(goToAssignments);
             }
         });
 
