@@ -6,14 +6,16 @@ class Order {
     String date;
     String status;
     double price;
+    String address;
 
     public Order() {}
 
-    public Order(String number, String date, String status, double price) {
+    public Order(String number, String date, String status, double price, String address) {
         this.number = number;
         this.date = date;
         this.status = status;
         this.price = price;
+        this.address = address;
     }
 
     public String getNumber() {
@@ -31,6 +33,8 @@ class Order {
     public double getPrice() {
         return price;
     }
+
+    public String getAddress() { return address; }
 
     public void updateStatus() {
         status = "Completed";

@@ -102,7 +102,7 @@ public class RunnerHome extends AppCompatActivity {
         myWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToWallet = new Intent(RunnerHome.this, WalletActivity.class);
+                Intent goToWallet = new Intent(RunnerHome.this, RunnerWalletActivity.class);
                 startActivity(goToWallet);
             }
         });
@@ -124,7 +124,8 @@ public class RunnerHome extends AppCompatActivity {
         myButtonJobPool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToPool = new Intent(RunnerHome.this, RunnerAssignmentPoolActivity.class);
+                startActivity(goToPool);
             }
         });
     }

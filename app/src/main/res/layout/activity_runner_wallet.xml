@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BuyerWalletActivity"
+    tools:context=".RunnerWalletActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -22,6 +22,16 @@
             android:textStyle="bold"
             android:text="My Wallet"/>
 
+        <TextView
+            android:id="@+id/Rwallet_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Balance: $XX.00"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:textColor="#ff0c0b"
+            android:gravity="center"/>
+
         <ImageView
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -33,19 +43,19 @@
             android:layout_height="60dp"
             android:clickable="true"
             android:paddingLeft="25dp"
-            android:id="@+id/Bpayment_add">
+            android:id="@+id/Rwallet_withdraw">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/add" />
+                android:src="@drawable/money" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
-                android:text="@string/wallet_add_payment"
+                android:text="Withdraw Balance"
                 android:textSize="25sp" />
 
         </LinearLayout>
@@ -55,19 +65,19 @@
             android:layout_height="60dp"
             android:clickable="true"
             android:paddingLeft="25dp"
-            android:id="@+id/Bpayment_delete">
+            android:id="@+id/Rwallet_manage">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/delete" />
+                android:src="@drawable/edit" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
-                android:text="@string/wallet_remove_payment"
+                android:text="Manage Bank Accounts"
                 android:textSize="25sp" />
 
         </LinearLayout>

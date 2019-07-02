@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ItemListActivity extends AppCompatActivity {
+public class RunnerAssignmentPoolActivity extends AppCompatActivity {
 
     DatabaseReference dataBaseItems;
     FirebaseAuth firebaseAuth;
@@ -36,44 +36,42 @@ public class ItemListActivity extends AppCompatActivity {
 
     ListView myListViewItems;
     FloatingActionButton myButtonHome;
-    SearchView mySearchView;
 
-    List<Item> itemList;
+    List<Order> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_list);
+        setContentView(R.layout.activity_runner_assignment_pool);
 
         dataBaseItems = FirebaseDatabase.getInstance().getReference("items");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
-        myListViewItems = (ListView) findViewById(R.id.buyer_shopping);
-        myButtonHome = (FloatingActionButton) findViewById(R.id.buyer_shopping_button_home);
-        mySearchView = (SearchView) findViewById(R.id.buyer_shopping_searchViewItem);
-        itemList = new ArrayList<>();
+        myListViewItems = (ListView) findViewById(R.id.runner_assignment_pool);
+        myButtonHome = (FloatingActionButton) findViewById(R.id.runner_assignment_pool_button_home);
+        list = new ArrayList<>();
 
         myButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent goToHome = new Intent(ItemListActivity.this, BuyerHome.class);
-            startActivity(goToHome);
+                Intent goToHome = new Intent(RunnerAssignmentPoolActivity.this, RunnerHome.class);
+                startActivity(goToHome);
             }
         });
 
-        myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
-            Item chosenItem = (Item) adapter.getItemAtPosition(position);
-            Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
-            goToAddPage.putExtra("item", chosenItem);
-            startActivity(goToAddPage);
+                Order chosenOrder = (Order) adapter.getItemAtPosition(position);
+                Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
+                goToAddPage.putExtra("item", chosenItem);
+                startActivity(goToAddPage);
             }
-        });
+        });*/
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
 
@@ -81,7 +79,7 @@ public class ItemListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                itemList.clear();
+                list.clear();
 
                 for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
 
@@ -91,11 +89,11 @@ public class ItemListActivity extends AppCompatActivity {
                     String price = itemSnapShot.child("price").getValue().toString();
                     double itemPrice = Double.valueOf(price);
 
-                    itemList.add(new Item(itemName, itemBrand, itemPrice, itemInfo));
+                    list.add(new Item(itemName, itemBrand, itemPrice, itemInfo));
                 }
 
-                Collections.sort(itemList, new ItemsComparator());
-                ItemList adapter = new ItemList(ItemListActivity.this, itemList);
+                Collections.sort(list, new ItemsComparator());
+                RunnerAssignmentPool adapter = new RunnerAssignmentPool(RunnerAssignmentPoolActivity.this, list);
                 myListViewItems.setAdapter(adapter);
             }
 
@@ -105,6 +103,5 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });
 
-
-    }
+    }*/
 }

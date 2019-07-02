@@ -108,7 +108,7 @@ public class BuyerHome extends AppCompatActivity {
         myWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToWallet = new Intent(BuyerHome.this, WalletActivity.class);
+                Intent goToWallet = new Intent(BuyerHome.this, BuyerWalletActivity.class);
                 startActivity(goToWallet);
             }
         });
@@ -116,7 +116,8 @@ public class BuyerHome extends AppCompatActivity {
         myAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToAddress = new Intent(BuyerHome.this, BuyerAddressActivity.class);
+                startActivity(goToAddress);
             }
         });
 

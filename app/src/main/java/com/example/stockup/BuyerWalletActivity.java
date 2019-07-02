@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class WalletActivity extends AppCompatActivity {
+public class BuyerWalletActivity extends AppCompatActivity {
 
     LinearLayout myLLAdd;
     LinearLayout myLLDelete;
