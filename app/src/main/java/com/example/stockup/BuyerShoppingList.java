@@ -49,7 +49,7 @@ public class BuyerShoppingList extends ArrayAdapter<Groceries> {
         brand.setText(grocery.getBrand());
         quantity.setText("" + grocery.getQuantity());
         double finalPrice =  grocery.getPrice() * grocery.getQuantity();
-        price.setText("$" + finalPrice);
+        price.setText("$" + String.format("%.2f", finalPrice));
 
         return listViewItem;
     }

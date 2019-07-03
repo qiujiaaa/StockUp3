@@ -44,10 +44,14 @@ public class BuyerAddToShoppingListActivity extends Activity {
             public void onClick(View v) {
                 String quantity = myEditTextQuantity.getText().toString().trim();
                 // Add to database
-                Groceries groceries = new Groceries(item, Integer.valueOf(quantity), "0");
-                Toast.makeText(BuyerAddToShoppingListActivity.this, "Added to Shopping List", Toast.LENGTH_LONG).show();
-                Intent goBack = new Intent(BuyerAddToShoppingListActivity.this, ItemListActivity.class);
-                startActivity(goBack);
+
+                if (quantity.isEmpty()) {
+                    Toast.makeText(BuyerAddToShoppingListActivity.this, "Enter quantity", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(BuyerAddToShoppingListActivity.this, "Added to Shopping List", Toast.LENGTH_LONG).show();
+                    Intent goBack = new Intent(BuyerAddToShoppingListActivity.this, ItemListActivity.class);
+                    startActivity(goBack);
+                }
             }
         });
 

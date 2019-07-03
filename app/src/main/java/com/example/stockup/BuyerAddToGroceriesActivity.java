@@ -44,10 +44,14 @@ public class BuyerAddToGroceriesActivity extends Activity {
             public void onClick(View v) {
                 String usagePeriod = myEditTextUsagePeriod.getText().toString().trim();
                 // Add to database
-                Groceries groceries = new Groceries(item, 0, usagePeriod);
-                Toast.makeText(BuyerAddToGroceriesActivity.this, "Added to Groceries List", Toast.LENGTH_LONG).show();
-                Intent goBack = new Intent(BuyerAddToGroceriesActivity.this, ItemListActivity.class);
-                startActivity(goBack);
+
+                if (usagePeriod.isEmpty()) {
+                    Toast.makeText(BuyerAddToGroceriesActivity.this, "Enter usage period", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(BuyerAddToGroceriesActivity.this, "Added to Groceries List", Toast.LENGTH_LONG).show();
+                    Intent goBack = new Intent(BuyerAddToGroceriesActivity.this, ItemListActivity.class);
+                    startActivity(goBack);
+                }
             }
         });
 
