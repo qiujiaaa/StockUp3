@@ -1,15 +1,17 @@
 package com.example.stockup;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BuyerAddToGroceriesActivity extends AppCompatActivity {
+public class BuyerAddToGroceriesActivity extends Activity {
 
     Item item;
 
@@ -21,6 +23,12 @@ public class BuyerAddToGroceriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_add_to_groceries);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
         Intent myIntent = getIntent();
         item = (Item) myIntent.getSerializableExtra("item");
