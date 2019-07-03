@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,20 +7,38 @@
     tools:context=".BuyerOrderActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/buyer_orders"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:paddingLeft="10dp"/>
-
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/buyer_my_orders"
-        android:paddingTop="10dp">
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buyer_orders"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"/>
 
-    </ListView>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/buyer_my_orders"
+            android:paddingTop="10dp">
 
-</LinearLayout>
+        </ListView>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buyer_order_button_home"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        app:backgroundTint="#ff6968"
+        app:srcCompat="@drawable/home" />
+
+</RelativeLayout>

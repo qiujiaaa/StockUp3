@@ -1,8 +1,11 @@
 package com.example.stockup;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +27,7 @@ public class BuyerOrderActivity extends AppCompatActivity {
 
     List<Order> list;
     ListView myListView;
+    FloatingActionButton myButtonHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,15 @@ public class BuyerOrderActivity extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         myListView = (ListView) findViewById(R.id.buyer_my_orders);
+        myButtonHome = (FloatingActionButton) findViewById(R.id.buyer_order_button_home);
+
+        myButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToHome = new Intent(BuyerOrderActivity.this, BuyerHome.class);
+                startActivity(goToHome);
+            }
+        });
 
         list = new ArrayList<>();
     }
