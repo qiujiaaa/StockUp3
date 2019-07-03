@@ -44,8 +44,7 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
         myButtonConfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(BuyerShoppingListActivity.this, "Order successfully sent", Toast.LENGTH_SHORT).show();
-                Intent goToOrders = new Intent(BuyerShoppingListActivity.this, BuyerOrderActivity.class);
+                Intent goToOrders = new Intent(BuyerShoppingListActivity.this, BuyerOrderConfirmationActivity.class);
                 startActivity(goToOrders);
             }
         });
