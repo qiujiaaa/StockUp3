@@ -49,28 +49,30 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
+                /*
                 list.add(new Groceries(new Item("100 Plus Isotonic Can Drink - Original", "100 PLUS", 14.7, "24 x 325ml"), 5, "30"));
                 list.add(new Groceries(new Item("Coca-Cola Mini Bottle - Classic", "COCA COLA", 8.50, "12 x 250ml"), 1, "25"));
                 list.add(new Groceries(new Item("Magiclean Wiper Dry Sheet", "MAGICLEAN", 14.15, "3 x 20 per pack "), 1, "40"));
                 list.add(new Groceries(new Item("Nature's Wonders Baked Nuts - Macadamia", "NATURE'S WONDERS", 12.70, "220g"), 1, "14"));
                 list.add(new Groceries(new Item("Top Detergent Powder - Super White", "FAB", 13.55, "5.5kg"), 1, "60"));
-
-                /*for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
+                */
+                for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
                     String email = itemSnapShot.child("email").getValue().toString();
                     if(email.equals(theEmail)) {
                         DataSnapshot newDS = itemSnapShot.child("myShoppingList");
                         for (DataSnapshot ds: newDS.getChildren()) {
                             String name = ds.child("name").getValue().toString();
                             list.add(ds.getValue(Groceries.class));
+                            /* Dummy grocery
                             if (!name.equals("a")) {
                                 list.add(ds.getValue(Groceries.class));
-                            }
+                            } */
 
                         }
 
                         break;
                     }
-                }*/
+                }
                 BuyerShoppingList adapter = new BuyerShoppingList(BuyerShoppingListActivity.this, list);
                 myListView.setAdapter(adapter);
 
