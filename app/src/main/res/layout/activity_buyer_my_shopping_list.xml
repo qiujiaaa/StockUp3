@@ -15,12 +15,23 @@
         android:textStyle="bold"
         android:paddingLeft="10dp"/>
 
+    <Button
+        android:id="@+id/buyer_shopping_list_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Order"
+        android:textSize="15sp"
+        android:paddingTop="10dp"
+        android:backgroundTint="#ff6867"
+        android:layout_gravity="center_horizontal"/>
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/buyer_shopping_list"
         android:paddingTop="10dp">
 
     </ListView>
+
 
 </LinearLayout>
