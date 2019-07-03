@@ -28,7 +28,7 @@ public class BuyerAddToGroceriesActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.65));
 
         Intent myIntent = getIntent();
         item = (Item) myIntent.getSerializableExtra("item");

@@ -10,14 +10,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/temp"/>
 
     <TextView
         android:id="@+id/add_to_shopping_list_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:text="@string/item_name"
         android:gravity="center_horizontal"/>
@@ -46,10 +46,10 @@
         android:id="@+id/add_to_shopping_list_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:textSize="15sp"
         android:text="Add to shopping list"
-        android:backgroundTint="#ff6867"
+        android:backgroundTint="#a2b5e3"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
