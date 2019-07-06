@@ -11,6 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
 public class BuyerAddToShoppingListActivity extends Activity {
 
     Item item;
@@ -18,6 +25,8 @@ public class BuyerAddToShoppingListActivity extends Activity {
     TextView myTextViewName;
     EditText myEditTextQuantity;
     Button myButtonAdd;
+    DatabaseReference myDataBaseRef;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +42,8 @@ public class BuyerAddToShoppingListActivity extends Activity {
         Intent myIntent = getIntent();
         item = (Item) myIntent.getSerializableExtra("item");
 
+        myDataBaseRef = FirebaseDatabase.getInstance().getReference().child("users");
+        user = FirebaseAuth.getInstance().getCurrentUser();
         myTextViewName = (TextView) findViewById(R.id.add_to_shopping_list_name);
         myEditTextQuantity = (EditText) findViewById(R.id.add_to_shopping_list_quantity);
         myButtonAdd = (Button) findViewById(R.id.add_to_shopping_list_button);
@@ -43,11 +54,15 @@ public class BuyerAddToShoppingListActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String quantity = myEditTextQuantity.getText().toString().trim();
-                // Add to database
 
                 if (quantity.isEmpty()) {
                     Toast.makeText(BuyerAddToShoppingListActivity.this, "Enter quantity", Toast.LENGTH_SHORT).show();
                 } else {
+                    // Connecting to database
+                    String username = user.getDisplayName();
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put(item.getName(), new Groceries(item, Integer.valueOf(quantity), ""));
+                    myDataBaseRef.child(username).child("myShoppingList").updateChildren(map);
                     Toast.makeText(BuyerAddToShoppingListActivity.this, "Added to Shopping List", Toast.LENGTH_LONG).show();
                     Intent goBack = new Intent(BuyerAddToShoppingListActivity.this, ItemListActivity.class);
                     startActivity(goBack);

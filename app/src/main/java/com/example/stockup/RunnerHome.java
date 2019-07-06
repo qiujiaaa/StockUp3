@@ -44,31 +44,8 @@ public class RunnerHome extends AppCompatActivity {
         myTextViewName = (TextView) findViewById(R.id.runner_name);
         final String theEmail = user.getEmail();
 
-        /*
-        Show username on creation.
-         */
-        databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String email = "";
-                String un = "";
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    email = ds.child("email").getValue().toString();
-                    if (email.equals(theEmail)) {
-                        un = ds.child("username").getValue().toString();
-                        break;
-                    }
-                }
-                myTextViewName.setText("Welcome, " + un + "!");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        //Show username on creation.
+        myTextViewName.setText("Welcome, " + user.getDisplayName() + "!");
 
         myAssignments = (LinearLayout) findViewById(R.id.directory_assignments);
         myCompleted = (LinearLayout) findViewById(R.id.directory_completed);

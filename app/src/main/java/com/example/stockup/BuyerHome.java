@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,32 +45,9 @@ public class BuyerHome extends AppCompatActivity {
 
         myTextViewName = (TextView) findViewById(R.id.buyer_name);
 
-        /*
-        Show username on creation.
-         */
-        final String theEmail = user.getEmail();
-        databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String email = "";
-                String un = "";
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    email = ds.child("email").getValue().toString();
-                    if (email.equals(theEmail)) {
-                        un = ds.child("username").getValue().toString();
-                        break;
-                    }
-                }
-                myTextViewName.setText("Welcome, " + un + "!");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        //Show username on creation.
+        myTextViewName.setText("Welcome, " + user.getDisplayName() + "!");
 
         myGroceries = (LinearLayout) findViewById(R.id.directory_groceries);
         myShoppingList = (LinearLayout) findViewById(R.id.directory_shopping_list);
