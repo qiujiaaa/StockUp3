@@ -20,6 +20,7 @@ public class BuyerOrderConfirmationActivity extends Activity {
 
         myButtonSend = (Button) findViewById(R.id.buyer_order_confirmation);
 
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
