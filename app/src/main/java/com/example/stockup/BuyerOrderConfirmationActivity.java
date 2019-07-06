@@ -36,5 +36,4 @@ public class BuyerOrderConfirmationActivity extends Activity {
         });
     }
 
-
 }
