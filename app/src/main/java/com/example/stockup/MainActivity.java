@@ -42,14 +42,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseRef = FirebaseDatabase.getInstance().getReference().child("users");
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        /* Checks if user is logged in or not. Direct them into home.
-        if (user != null) {
-            finish();
-            startActivity(new Intent(MainActivity.this, BuyerHome.class));
-        }*/
-
         myTextViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,34 +68,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    databaseRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            String role = "";
-                            String email = "";
 
-                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                email = ds.child("email").getValue().toString();
-                                if (email.equals(theEmail)) {
-                                    role = ds.child("role").getValue().toString();
-                                    break;
-                                }
-                            }
-                            Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            Intent goToHome;
-                            if (role.equals("buyer")) {
-                                goToHome = new Intent(MainActivity.this, BuyerHome.class);
-                            } else {
-                                goToHome = new Intent(MainActivity.this, RunnerHome.class);
-                            }
-                            startActivity(goToHome);
-                        }
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String role = user.getDisplayName().substring(0, 1);
+                    Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    Intent goToHome;
+                    if (role.equals("B")) {
+                        goToHome = new Intent(MainActivity.this, BuyerHome.class);
+                    } else {
+                        goToHome = new Intent(MainActivity.this, RunnerHome.class);
+                    }
+                    startActivity(goToHome);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
                 } else {
                     Toast.makeText(MainActivity.this, "Wrong username or password. Try Again.", Toast.LENGTH_SHORT).show();
                 }

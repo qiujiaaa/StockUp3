@@ -47,7 +47,7 @@ public class BuyerHome extends AppCompatActivity {
 
 
         //Show username on creation.
-        myTextViewName.setText("Welcome, " + user.getDisplayName() + "!");
+        myTextViewName.setText("Welcome, " + user.getDisplayName().substring(1) + "!");
 
         myGroceries = (LinearLayout) findViewById(R.id.directory_groceries);
         myShoppingList = (LinearLayout) findViewById(R.id.directory_shopping_list);

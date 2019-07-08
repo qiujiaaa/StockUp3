@@ -27,14 +27,14 @@
 
         <CheckBox
             android:id="@+id/buyer"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/buyer" />
 
         <CheckBox
             android:id="@+id/runner"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/runner" />
@@ -44,31 +44,46 @@
 
     <EditText
         android:id="@+id/edittext_new_email"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:hint="@string/new_email" />
 
     <EditText
         android:id="@+id/edittext_new_username"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/new_username" />
 
-    <EditText
-        android:id="@+id/edittext_new_password"
-        android:layout_width="200dp"
+    <android.support.design.widget.TextInputLayout
+        app:passwordToggleEnabled="true"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/new_password"/>
+        android:layout_width="250dp">
 
-    <EditText
-        android:id="@+id/edittext_confirm_password"
-        android:layout_width="200dp"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edittext_new_password"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/new_password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        app:passwordToggleEnabled="true"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/confirm_password"/>
+        android:layout_width="250dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edittext_confirm_password"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         android:id="@+id/button_register"

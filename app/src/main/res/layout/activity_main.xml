@@ -17,17 +17,25 @@
 
     <EditText
         android:id="@+id/edittext_email"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
         android:hint="@string/email" />
 
-    <EditText
+
+    <android.support.design.widget.TextInputLayout
+        app:passwordToggleEnabled="true"
+        android:layout_height="40dp"
+        android:layout_width="250dp">
+
+    <android.support.design.widget.TextInputEditText
         android:id="@+id/edittext_password"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/password"/>
+        android:hint="Password"
+        android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/button_login"

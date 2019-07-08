@@ -45,7 +45,7 @@ public class RunnerHome extends AppCompatActivity {
         final String theEmail = user.getEmail();
 
         //Show username on creation.
-        myTextViewName.setText("Welcome, " + user.getDisplayName() + "!");
+        myTextViewName.setText("Welcome, " + user.getDisplayName().substring(1) + "!");
 
         myAssignments = (LinearLayout) findViewById(R.id.directory_assignments);
         myCompleted = (LinearLayout) findViewById(R.id.directory_completed);

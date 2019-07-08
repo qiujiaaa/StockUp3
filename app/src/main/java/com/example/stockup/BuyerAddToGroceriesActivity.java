@@ -64,13 +64,13 @@ public class BuyerAddToGroceriesActivity extends Activity {
                     Toast.makeText(BuyerAddToGroceriesActivity.this, "Enter usage period", Toast.LENGTH_SHORT).show();
                 } else {
                     // Connecting to database
-                    String username = user.getDisplayName();
+                    String username = user.getDisplayName().substring(1);
                     HashMap<String, Object> map = new HashMap<>();
                     map.put(item.getName(), new Groceries(item, 0, usagePeriod));
                     myDataBaseRef.child(username).child("myGroceries").updateChildren(map);
-                    Toast.makeText(BuyerAddToGroceriesActivity.this, "Added to Groceries", Toast.LENGTH_LONG).show();
-                    Intent goBack = new Intent(BuyerAddToGroceriesActivity.this, ItemListActivity.class);
-                    startActivity(goBack);
+                    Toast.makeText(BuyerAddToGroceriesActivity.this, "Added to Groceries", Toast.LENGTH_SHORT).show();
+                    //Intent goBack = new Intent(BuyerAddToGroceriesActivity.this, ItemListActivity.class);
+                    //startActivity(goBack);
 
                 }
             }

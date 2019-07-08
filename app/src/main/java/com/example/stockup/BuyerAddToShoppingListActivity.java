@@ -59,7 +59,7 @@ public class BuyerAddToShoppingListActivity extends Activity {
                     Toast.makeText(BuyerAddToShoppingListActivity.this, "Enter quantity", Toast.LENGTH_SHORT).show();
                 } else {
                     // Connecting to database
-                    String username = user.getDisplayName();
+                    String username = user.getDisplayName().substring(1);
                     HashMap<String, Object> map = new HashMap<>();
                     map.put(item.getName(), new Groceries(item, Integer.valueOf(quantity), ""));
                     myDataBaseRef.child(username).child("myShoppingList").updateChildren(map);

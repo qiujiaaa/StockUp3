@@ -85,20 +85,23 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        // Setting display name
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                                .setDisplayName(theUser).build();
-
-                                        user.updateProfile(profileUpdates);
+                                        UserProfileChangeRequest profileUpdates;
 
                                         User newUser;
                                         if (isBuyer) {
                                             newUser = new User(theUser, theEmail, "buyer");
+                                            profileUpdates = new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName("B" + theUser).build();
                                         } else {
                                             newUser = new User(theUser, theEmail, "runner");
+                                            profileUpdates = new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName("R" + theUser).build();
                                         }
+
+                                        // Setting display name
+                                        user.updateProfile(profileUpdates);
+
                                         databaseRef.child(theUser).setValue(newUser);
                                         Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                         Intent loginIntent = new Intent(RegisterActivity.this, MainActivity.class);
