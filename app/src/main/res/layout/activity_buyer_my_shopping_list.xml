@@ -15,6 +15,34 @@
         android:textStyle="bold"
         android:paddingLeft="10dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:textStyle="italic"
+        android:text="Submit your order in 3 simple steps!"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:textStyle="italic"
+        android:text="1. Check through your items."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:textStyle="italic"
+        android:text="2. Change the quantity accordingly."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:textStyle="italic"
+        android:text="3. Click on the button below!"/>
+
     <Button
         android:id="@+id/buyer_shopping_list_order"
         android:layout_width="wrap_content"

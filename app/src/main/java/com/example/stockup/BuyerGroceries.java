@@ -10,6 +10,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class BuyerGroceries extends ArrayAdapter<Groceries> {
@@ -40,6 +46,19 @@ public class BuyerGroceries extends ArrayAdapter<Groceries> {
         name.setText(grocery.getName());
         brand.setText(grocery.getBrand());
         usage.setText(grocery.getUsagePeriod());
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myShoppingList");
+                HashMap<String, Object> map = new HashMap<>();
+                grocery.increaseQuantity();
+                map.put(grocery.getName(), grocery);
+                databaseRef.updateChildren(map);
+                Toast.makeText(getContext(), "Added to Shopping List", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return listViewItem;
     }
