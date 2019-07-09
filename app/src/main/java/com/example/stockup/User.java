@@ -10,6 +10,8 @@ public class User {
     String role;
     List<Groceries> myShoppingList;
     List<Groceries> myGroceries;
+    List<String> myCard;
+    List<String> myAddress;
 
     public User() {}
 
@@ -24,6 +26,12 @@ public class User {
 
         myGroceries = new ArrayList<>();
         myGroceries.add(new Groceries(new Item("", "", 0, ""), 0, "0"));
+
+        myCard = new ArrayList<>();
+        myCard.add(" ");
+
+        myAddress = new ArrayList<>();
+        myAddress.add(" ");
     }
 
     public String getUsername() {
@@ -42,7 +50,7 @@ public class User {
 
     public List<Groceries> getMyGroceries() { return myGroceries; }
 
-    public void addNewShopping(Groceries g) {
-        myShoppingList.add(g);
-    }
+    public List<String> getCard() { return myCard; }
+
+    public List<String> getMyAddress() { return myAddress; }
 }

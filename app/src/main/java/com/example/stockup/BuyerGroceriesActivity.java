@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BuyerGroceriesActivity extends AppCompatActivity {
@@ -65,6 +66,7 @@ public class BuyerGroceriesActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                Collections.sort(list, new GroceriesComparator());
                 BuyerGroceries adapter = new BuyerGroceries(BuyerGroceriesActivity.this, list);
                 myListView.setAdapter(adapter);
 

@@ -102,10 +102,17 @@ public class RegisterActivity extends AppCompatActivity {
                                         // Setting display name
                                         user.updateProfile(profileUpdates);
 
+                                        // Adding user to database
                                         databaseRef.child(theUser).setValue(newUser);
-                                        Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                        Intent loginIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        startActivity(loginIntent);
+
+                                        if (isBuyer) {
+                                            Intent loginIntent = new Intent(RegisterActivity.this, Register2Activity.class);
+                                            startActivity(loginIntent);
+                                        } else {
+                                            Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                            Intent loginIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                            startActivity(loginIntent);
+                                        }
                                     } else {
                                         Toast.makeText(RegisterActivity.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
                                     }

@@ -18,7 +18,6 @@ public class BuyerAddItemActivity extends AppCompatActivity {
     TextView myTextViewInfo;
     Button myButtonShopping;
     Button myButtonGroceries;
-    Button myButtonBookmarks;
     Item item;
 
     @Override
@@ -35,7 +34,6 @@ public class BuyerAddItemActivity extends AppCompatActivity {
         myTextViewInfo = (TextView) findViewById(R.id.add_item_info);
         myButtonShopping = (Button) findViewById(R.id.add_item_shopping);
         myButtonGroceries = (Button) findViewById(R.id.add_item_groceries);
-        myButtonBookmarks = (Button) findViewById(R.id.add_item_bookmarks);
 
         myTextViewName.setText(item.getName());
         myTextViewBrand.setText(item.getBrand());
@@ -57,14 +55,6 @@ public class BuyerAddItemActivity extends AppCompatActivity {
                 Intent goToAddShopping = new Intent(BuyerAddItemActivity.this, BuyerAddToShoppingListActivity.class);
                 goToAddShopping.putExtra("item", item);
                 startActivity(goToAddShopping);
-            }
-        });
-
-        myButtonBookmarks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // ADD TO DATABASE :X
-                Toast.makeText(BuyerAddItemActivity.this, "Added to Bookmarks", Toast.LENGTH_SHORT).show();
             }
         });
 

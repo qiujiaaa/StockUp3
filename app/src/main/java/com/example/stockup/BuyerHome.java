@@ -25,7 +25,6 @@ public class BuyerHome extends AppCompatActivity {
     LinearLayout myGroceries;
     LinearLayout myShoppingList;
     LinearLayout myOrders;
-    LinearLayout myBookmarks;
     LinearLayout myWallet;
     LinearLayout myAddress;
     LinearLayout mySettings;
@@ -52,7 +51,6 @@ public class BuyerHome extends AppCompatActivity {
         myGroceries = (LinearLayout) findViewById(R.id.directory_groceries);
         myShoppingList = (LinearLayout) findViewById(R.id.directory_shopping_list);
         myOrders = (LinearLayout) findViewById(R.id.directory_orders);
-        myBookmarks = (LinearLayout) findViewById(R.id.directory_Bbookmarks);
         myWallet = (LinearLayout) findViewById(R.id.directory_Bwallet);
         myAddress = (LinearLayout) findViewById(R.id.directory_Baddress);
         mySettings = (LinearLayout) findViewById(R.id.directory_Bsettings);

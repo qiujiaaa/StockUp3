@@ -14,25 +14,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm Order?"
+            android:text="Order Confirmation"
             android:textSize="30sp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
+            android:textStyle="bold"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment Method:"
+            android:text="Payment Method: "
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"/>
 
-        <Spinner
+        <TextView
+            android:id="@+id/buyer_order_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-        </Spinner>
+            android:text="CARD NUMBER"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,18 +45,38 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"/>
 
-        <Spinner
+        <TextView
+            android:id="@+id/buyer_order_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-        </Spinner>
+            android:text="ADDRESS"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total amount:"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/buyer_order_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COST"
+            android:textSize="25sp"
+            android:textColor="#ff0c0b"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/buyer_order_confirmation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"
+            android:text="Submit"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:backgroundTint="#ff6867" />

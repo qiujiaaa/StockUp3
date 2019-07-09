@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".BuyerOrderConfirmationActivity"></activity>
+        <activity android:name=".Register2Activity"></activity>
+        <activity android:name=".BuyerOrderConfirmationActivity" />
         <activity android:name=".RunnerAssignmentActivity" />
         <activity android:name=".RunnerAssignmentPoolActivity" />
         <activity android:name=".RunnerWalletActivity" />

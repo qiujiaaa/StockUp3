@@ -14,8 +14,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class BuyerShoppingList extends ArrayAdapter<Groceries> {
@@ -50,6 +56,30 @@ public class BuyerShoppingList extends ArrayAdapter<Groceries> {
         quantity.setText("" + grocery.getQuantity());
         double finalPrice =  grocery.getPrice() * grocery.getQuantity();
         price.setText("$" + String.format("%.2f", finalPrice));
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myShoppingList");
+                HashMap<String, Object> map = new HashMap<>();
+                grocery.increaseQuantity();
+                map.put(grocery.getName(), grocery);
+                databaseRef.updateChildren(map);
+            }
+        });
+
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myShoppingList");
+                HashMap<String, Object> map = new HashMap<>();
+                grocery.decreaseQuantity();
+                map.put(grocery.getName(), grocery);
+                databaseRef.updateChildren(map);
+            }
+        });
 
         return listViewItem;
     }

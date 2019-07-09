@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BuyerShoppingListActivity extends AppCompatActivity {
@@ -70,8 +71,6 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
                         DataSnapshot newDS = itemSnapShot.child("myShoppingList");
                         for (DataSnapshot ds: newDS.getChildren()) {
                             String name = ds.child("name").getValue().toString();
-                            //list.add(ds.getValue(Groceries.class));
-                            // Dummy grocery
                             if (!name.equals("")) {
                                 list.add(ds.getValue(Groceries.class));
                             }
@@ -81,6 +80,7 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                Collections.sort(list, new GroceriesComparator());
                 BuyerShoppingList adapter = new BuyerShoppingList(BuyerShoppingListActivity.this, list);
                 myListView.setAdapter(adapter);
 

@@ -77,11 +77,4 @@ public class BuyerAddToGroceriesActivity extends Activity {
         });
     }
 
-    private void updateData(User theUser, String usagePeriod) {
-
-        theUser.addNewShopping(new Groceries(item, 0, usagePeriod));
-        myDataBaseRef.child(theUser.getUsername()).child("myShoppingList").setValue(theUser.getMyShoppingList());
-        Toast.makeText(BuyerAddToGroceriesActivity.this, "Added to Groceries List", Toast.LENGTH_LONG).show();
-
-    }
 }
