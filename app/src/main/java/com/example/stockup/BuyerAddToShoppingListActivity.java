@@ -63,7 +63,7 @@ public class BuyerAddToShoppingListActivity extends Activity {
                     HashMap<String, Object> map = new HashMap<>();
                     map.put(item.getName(), new Groceries(item, Integer.valueOf(quantity), ""));
                     myDataBaseRef.child(username).child("myShoppingList").updateChildren(map);
-                    Toast.makeText(BuyerAddToShoppingListActivity.this, "Added to Shopping List", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BuyerAddToShoppingListActivity.this, "Added to Shopping Cart", Toast.LENGTH_LONG).show();
                     Intent goBack = new Intent(BuyerAddToShoppingListActivity.this, ItemListActivity.class);
                     startActivity(goBack);
                 }

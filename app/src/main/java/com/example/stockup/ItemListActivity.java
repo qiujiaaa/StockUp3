@@ -39,6 +39,7 @@ public class ItemListActivity extends AppCompatActivity {
     SearchView mySearchView;
 
     List<Item> itemList;
+    List<Item> searchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class ItemListActivity extends AppCompatActivity {
         myButtonHome = (FloatingActionButton) findViewById(R.id.buyer_shopping_button_home);
         mySearchView = (SearchView) findViewById(R.id.buyer_shopping_searchViewItem);
         itemList = new ArrayList<>();
+        searchList = new ArrayList<>();
 
         myButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,40 @@ public class ItemListActivity extends AppCompatActivity {
             startActivity(goToAddPage);
             }
         });
+
+        mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return searchName(newText);
+            }
+        });
+    }
+
+    private boolean searchName(String text) {
+
+        String search = text.toLowerCase();
+        searchList.clear();
+
+        for (Item item: itemList) {
+            String name = item.getName().toLowerCase();
+            if (name.contains(search)) {
+                searchList.add(item);
+            }
+        }
+        if (searchList.isEmpty()) {
+            Toast.makeText(ItemListActivity.this, "No search results.", Toast.LENGTH_SHORT).show();
+        }
+
+        Collections.sort(searchList, new ItemsComparator());
+        ItemList adapter = new ItemList(ItemListActivity.this, searchList);
+        myListViewItems.setAdapter(adapter);
+        return false;
+
     }
 
     @Override

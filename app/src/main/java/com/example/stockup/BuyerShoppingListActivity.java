@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,8 +46,13 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
         myButtonConfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToOrders = new Intent(BuyerShoppingListActivity.this, BuyerOrderConfirmationActivity.class);
-                startActivity(goToOrders);
+                if (list.size() == 0) {
+                    Toast.makeText(BuyerShoppingListActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent goToOrders = new Intent(BuyerShoppingListActivity.this, BuyerOrderConfirmationActivity.class);
+                    goToOrders.putExtra("list", (Serializable) list);
+                    startActivity(goToOrders);
+                }
             }
         });
 

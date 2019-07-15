@@ -42,7 +42,7 @@ public class BuyerOrder extends ArrayAdapter<Order> {
         orderNum.setText("Order #" + order.getNumber());
         orderDate.setText("Date Ordered: " + order.getDate());
         orderStatus.setText("Order Status: " + order.getStatus());
-        orderPrice.setText("$" + order.getPrice());
+        orderPrice.setText(order.getPrice());
 
         return listViewItem;
     }

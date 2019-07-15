@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,12 +18,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BuyerOrderActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
-    FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
     List<Order> list;
@@ -34,11 +35,12 @@ public class BuyerOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_order);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        String username = user.getDisplayName().substring(1);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(username).child("myOrder");
         myListView = (ListView) findViewById(R.id.buyer_my_orders);
         myButtonHome = (FloatingActionButton) findViewById(R.id.buyer_order_button_home);
+
 
         myButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +62,19 @@ public class BuyerOrderActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
 
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    String num = ds.child("number").getValue().toString();
+                    if (!num.equals("")) {
+                        list.add(ds.getValue(Order.class));
+                    }
+
+                }
+
+                Collections.sort(list, new OrderComparator());
+                BuyerOrder adapter = new BuyerOrder(BuyerOrderActivity.this, list);
+                myListView.setAdapter(adapter);
             }
 
             @Override
