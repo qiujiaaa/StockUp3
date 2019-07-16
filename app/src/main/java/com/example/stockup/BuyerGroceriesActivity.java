@@ -1,9 +1,14 @@
 package com.example.stockup;
 
+import android.content.Intent;
+import android.net.wifi.WifiConfiguration;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +43,16 @@ public class BuyerGroceriesActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
+        myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long id) {
+                Groceries g = (Groceries) adapter.getItemAtPosition(position);
+                databaseReference.child(user.getDisplayName().substring(1)).child("myGroceries").child(g.getName()).removeValue();
+                Toast.makeText(BuyerGroceriesActivity.this, "Item removed.", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
     }
 
     @Override
@@ -69,7 +84,6 @@ public class BuyerGroceriesActivity extends AppCompatActivity {
                 Collections.sort(list, new GroceriesComparator());
                 BuyerGroceries adapter = new BuyerGroceries(BuyerGroceriesActivity.this, list);
                 myListView.setAdapter(adapter);
-
             }
 
             @Override

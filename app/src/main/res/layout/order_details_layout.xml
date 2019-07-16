@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="5">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/order_detail_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="Item Name"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:textColor="#7c73b4" />
+
+            <TextView
+                android:id="@+id/order_detail_item_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quantity: "
+                android:textStyle="italic"
+                android:layout_marginTop="3dp"
+                android:textSize="13sp"
+                android:textColor="#7c73b4"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/order_detail_item_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="$XX.XX"
+            android:gravity="left"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="11dp"
+            android:textSize="20sp"
+            android:textColor="#ff0c0b" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -41,12 +41,21 @@ public class BuyerOrderActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.buyer_my_orders);
         myButtonHome = (FloatingActionButton) findViewById(R.id.buyer_order_button_home);
 
-
         myButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToHome = new Intent(BuyerOrderActivity.this, BuyerHome.class);
                 startActivity(goToHome);
+            }
+        });
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Order chosenOrder = (Order) parent.getItemAtPosition(position);
+                Intent goToDetailsPage = new Intent(BuyerOrderActivity.this, BuyerOrderDetailsActivity.class);
+                goToDetailsPage.putExtra("order", chosenOrder);
+                startActivity(goToDetailsPage);
             }
         });
 

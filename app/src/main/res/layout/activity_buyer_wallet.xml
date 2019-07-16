@@ -28,11 +28,21 @@
             android:layout_height="0dp"
             android:src="@drawable/creditcard"/>
 
+        <TextView
+            android:id="@+id/Bpayment_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XXXX-XXXX_XXXX-XXXX"
+            android:textSize="22sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:clickable="true"
             android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/Bpayment_add">
 
             <ImageView
@@ -45,29 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
-                android:text="@string/wallet_add_payment"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:clickable="true"
-            android:paddingLeft="25dp"
-            android:id="@+id/Bpayment_delete">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/delete" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="10dp"
-                android:text="@string/wallet_remove_payment"
+                android:text="Change Payment Method"
                 android:textSize="25sp" />
 
         </LinearLayout>

@@ -20,7 +20,14 @@
         android:layout_height="wrap_content"
         android:paddingLeft="12dp"
         android:textStyle="italic"
-        android:text="Click on the + button to add it into your shopping list!"/>
+        android:text="Press the + button to add it into your shopping list!"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:textStyle="italic"
+        android:text="LONG press on an item to remove it from bookmarks!"/>
 
     <ListView
         android:layout_width="match_parent"

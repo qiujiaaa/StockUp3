@@ -67,10 +67,10 @@ public class ItemListActivity extends AppCompatActivity {
         myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
-            Item chosenItem = (Item) adapter.getItemAtPosition(position);
-            Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
-            goToAddPage.putExtra("item", chosenItem);
-            startActivity(goToAddPage);
+                Item chosenItem = (Item) adapter.getItemAtPosition(position);
+                Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
+                goToAddPage.putExtra("item", chosenItem);
+                startActivity(goToAddPage);
             }
         });
 

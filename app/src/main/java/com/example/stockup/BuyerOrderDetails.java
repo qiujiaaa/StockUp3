@@ -1,32 +1,49 @@
 package com.example.stockup;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ListView;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class BuyerOrderDetails extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    TextView myTVNum;
-    TextView myTVDate;
-    TextView myTVStatus;
-    TextView myTVPrice;
-    TextView myTVFinal;
-    ListView myListView;
+import java.util.List;
+
+public class BuyerOrderDetails extends ArrayAdapter<Groceries> {
+
+    Activity context;
+    List<Groceries> orders;
+
+    public BuyerOrderDetails(Activity context, List<Groceries> orders) {
+
+        super(context, R.layout.order_details_layout, orders);
+        this.context = context;
+        this.orders = orders;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buyer_order_details);
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        myTVNum = (TextView) findViewById(R.id.buyer_order_detail_order_num);
-        myTVDate = (TextView) findViewById(R.id.buyer_order_detail_date);
-        myTVStatus = (TextView) findViewById(R.id.buyer_order_detail_status);
-        myTVPrice = (TextView) findViewById(R.id.buyer_order_detail_price);
-        myTVFinal = (TextView) findViewById(R.id.buyer_order_detail_final_price);
-        myListView = (ListView) findViewById(R.id.buyer_order_detail_list_view);
+        LayoutInflater inflater = context.getLayoutInflater();
+        View listViewItem = inflater.inflate(R.layout.order_details_layout, null, true);
 
+        TextView name = (TextView) listViewItem.findViewById(R.id.order_detail_item_name);
+        TextView quantity = (TextView) listViewItem.findViewById(R.id.order_detail_item_quantity);
+        TextView price = (TextView) listViewItem.findViewById(R.id.order_detail_item_price);
 
+        final Groceries grocery = orders.get(position);
 
+        name.setText(grocery.getName());
+        quantity.setText("Qty: " + grocery.getQuantity());
+        double totalPrice = grocery.getPrice() * grocery.getQuantity();
+        price.setText("$" + String.format("%.2f", totalPrice));
+
+        return listViewItem;
     }
+
 }

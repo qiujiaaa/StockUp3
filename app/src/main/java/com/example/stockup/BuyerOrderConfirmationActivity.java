@@ -54,13 +54,17 @@ public class BuyerOrderConfirmationActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 myTextViewAddress.setText(dataSnapshot.child("myAddress").child("real").getValue().toString());
-                myTextViewCard.setText(dataSnapshot.child("myCard").child("real").getValue().toString().substring(0, 16));
 
-                double price =  3.0;
+                String card = dataSnapshot.child("myCard").child("real").getValue().toString().substring(0, 16);
+                card = card.substring(0, 4) + "-" + card.substring(4, 8) + "-" + card.substring(8, 12) + "-" + card.substring(12);
+                myTextViewCard.setText(card);
+
+                double price =  0.0;
                 for (DataSnapshot ds: dataSnapshot.child("myShoppingList").getChildren()) {
                     Groceries g = ds.getValue(Groceries.class);
                     price += g.getPrice() * g.getQuantity();
                 }
+                price += 3;
                 myTextViewPrice.setText("$" + String.format("%.2f", price));
             }
 

@@ -1,9 +1,10 @@
 package com.example.stockup;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-class Order {
+class Order implements Serializable {
 
     static int count = 1;
 

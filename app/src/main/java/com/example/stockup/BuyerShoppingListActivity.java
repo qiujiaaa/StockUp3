@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -77,7 +78,8 @@ public class BuyerShoppingListActivity extends AppCompatActivity {
                         DataSnapshot newDS = itemSnapShot.child("myShoppingList");
                         for (DataSnapshot ds: newDS.getChildren()) {
                             String name = ds.child("name").getValue().toString();
-                            if (!name.equals("")) {
+                            int quantity = ds.child("quantity").getValue(Integer.class);
+                            if (!name.equals("") && quantity != 0) {
                                 list.add(ds.getValue(Groceries.class));
                             }
 
