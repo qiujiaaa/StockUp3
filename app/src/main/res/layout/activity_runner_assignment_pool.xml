@@ -11,6 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available Assignments"
+            android:textSize="30sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+
         <ListView
             android:id="@+id/runner_assignment_pool"
             android:layout_width="match_parent"

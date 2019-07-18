@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyerOrderDetailsActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/runner_assignment_detail_assignment_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assignment #101"
+            android:textSize="40sp"
+            android:textColor="#ff0c0b"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/runner_assignment_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Posted: XX-XX-XXXX"
+            android:textSize="18sp"
+            android:layout_marginTop="15sp"
+            android:layout_marginLeft="13dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/runner_assignment_detail_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address: "
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="13dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Summary:"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="13dp"
+                android:textStyle="bold"/>
+
+        <ListView
+            android:id="@+id/runner_assignment_detail_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+        </ListView>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/runner_assignment_order_detail_add_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        app:backgroundTint="#43e99b"
+        app:srcCompat="@drawable/add" />
+
+</RelativeLayout>

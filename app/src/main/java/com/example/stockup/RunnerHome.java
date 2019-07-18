@@ -25,7 +25,6 @@ public class RunnerHome extends AppCompatActivity {
     LinearLayout myCompleted;
     LinearLayout myBookmarks;
     LinearLayout myWallet;
-    LinearLayout myUNDECIDED;
     LinearLayout mySettings;
     FloatingActionButton myButtonJobPool;
 
@@ -51,7 +50,6 @@ public class RunnerHome extends AppCompatActivity {
         myCompleted = (LinearLayout) findViewById(R.id.directory_completed);
         myBookmarks = (LinearLayout) findViewById(R.id.directory_Rbookmarks);
         myWallet = (LinearLayout) findViewById(R.id.directory_Rwallet);
-        myUNDECIDED = (LinearLayout) findViewById(R.id.directory_Rundecided);
         mySettings = (LinearLayout) findViewById(R.id.directory_Rsettings);
         myButtonJobPool = (FloatingActionButton) findViewById(R.id.button_jobs);
 
@@ -86,13 +84,6 @@ public class RunnerHome extends AppCompatActivity {
         });
 
         mySettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        myUNDECIDED.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

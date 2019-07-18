@@ -48,7 +48,7 @@ class Order implements Serializable {
 
     public static void increaseCount() { count++; }
 
-    public void updateStatus() {
-        status = "Completed";
+    public void setStatus(String newStatus) {
+        status = newStatus;
     }
 }

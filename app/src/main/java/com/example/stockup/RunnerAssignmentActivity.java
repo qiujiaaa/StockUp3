@@ -35,6 +35,7 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
     FirebaseUser user;
 
     ListView myListViewItems;
+    FloatingActionButton myHomeButton;
 
     List<Order> list;
 
@@ -48,7 +49,16 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
 
         myListViewItems = (ListView) findViewById(R.id.runner_assignment_list);
+        myHomeButton = (FloatingActionButton) findViewById(R.id.runner_assignment_button_home);
         list = new ArrayList<>();
+
+        myHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToHome = new Intent(RunnerAssignmentActivity.this, RunnerHome.class);
+                startActivity(goToHome);
+            }
+        });
 
         /*myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

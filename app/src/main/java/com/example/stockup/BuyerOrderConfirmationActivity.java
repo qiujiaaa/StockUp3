@@ -33,6 +33,7 @@ public class BuyerOrderConfirmationActivity extends Activity {
     TextView myTextViewPrice;
     FirebaseUser user;
     DatabaseReference databaseRef;
+    DatabaseReference myRef;
     List<Groceries> list;
     int count; //for order number
 
@@ -43,6 +44,7 @@ public class BuyerOrderConfirmationActivity extends Activity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1));
+        myRef = FirebaseDatabase.getInstance().getReference("count");
         list = (List<Groceries>) getIntent().getSerializableExtra("list");
 
         myButtonSend = (Button) findViewById(R.id.buyer_order_confirmation);
@@ -95,14 +97,12 @@ public class BuyerOrderConfirmationActivity extends Activity {
 
                 // Add to Orders Pool in Firebase
                 DatabaseReference ordersDataRef = FirebaseDatabase.getInstance().getReference("orders");
-                ordersDataRef.child("count").setValue(++count);
-                HashMap<String, Object> map2 = new HashMap<>();
-                map2.put("" + count, order);
-                ordersDataRef.updateChildren(map2);
+                myRef.setValue(1 + count);
+                ordersDataRef.child("" + count).setValue(order);
 
                 // Add to Orders in user
                 DatabaseReference orderListDataRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myOrder");
-                orderListDataRef.updateChildren(map2);
+                orderListDataRef.child("" + (count+1)).setValue(order);
 
                 Toast.makeText(BuyerOrderConfirmationActivity.this, "Order Submitted", Toast.LENGTH_SHORT).show();
                 Intent goToOrder = new Intent(BuyerOrderConfirmationActivity.this, BuyerOrderActivity.class);
@@ -115,11 +115,10 @@ public class BuyerOrderConfirmationActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("orders");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                count = dataSnapshot.child("count").getValue(Integer.class);
+                count = dataSnapshot.getValue(Integer.class);
             }
 
             @Override

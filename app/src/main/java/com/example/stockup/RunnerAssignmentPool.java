@@ -35,7 +35,7 @@ public class RunnerAssignmentPool extends ArrayAdapter<Order> {
 
         final Order order = orders.get(position);
 
-        number.setText("Address #" + order.getNumber());
+        number.setText("Assignment #" + order.getNumber());
         date.setText("Date Posted: " + order.getDate());
         address.setText("Address: " + order.getAddress());
 

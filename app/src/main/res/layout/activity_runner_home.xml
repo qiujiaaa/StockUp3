@@ -182,36 +182,7 @@
                 android:gravity="end"
                 android:src="@drawable/arrow" />
         </LinearLayout>
-
-        <LinearLayout
-            android:clickable="true"
-            android:id="@+id/directory_Rundecided"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="25dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:src="@drawable/directory_bookmarks" />
-
-            <TextView
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="10dp"
-                android:text="UNDECIDED"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:gravity="end"
-                android:src="@drawable/arrow" />
-        </LinearLayout>
     </LinearLayout>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_jobs"
@@ -223,6 +194,5 @@
         android:clickable="true"
         app:backgroundTint="#43e99b"
         app:srcCompat="@drawable/jobs_button" />
-
 
 </LinearLayout>

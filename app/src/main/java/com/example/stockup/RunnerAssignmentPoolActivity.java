@@ -1,17 +1,12 @@
 package com.example.stockup;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,11 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class RunnerAssignmentPoolActivity extends AppCompatActivity {
@@ -44,7 +37,7 @@ public class RunnerAssignmentPoolActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_runner_assignment_pool);
 
-        dataBaseItems = FirebaseDatabase.getInstance().getReference("items");
+        dataBaseItems = FirebaseDatabase.getInstance().getReference("orders");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
@@ -60,18 +53,18 @@ public class RunnerAssignmentPoolActivity extends AppCompatActivity {
             }
         });
 
-        /*myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
-                Order chosenOrder = (Order) adapter.getItemAtPosition(position);
-                Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
-                goToAddPage.putExtra("item", chosenItem);
-                startActivity(goToAddPage);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Order chosenOrder = (Order) parent.getItemAtPosition(position);
+                Intent goToDetailsPage = new Intent(RunnerAssignmentPoolActivity.this, RunnerAssignmentPoolDetailsActivity.class);
+                goToDetailsPage.putExtra("order", chosenOrder);
+                startActivity(goToDetailsPage);
             }
-        });*/
+        });
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -83,16 +76,20 @@ public class RunnerAssignmentPoolActivity extends AppCompatActivity {
 
                 for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
 
-                    String itemName = itemSnapShot.child("name").getValue().toString();
-                    String itemBrand = itemSnapShot.child("brand").getValue().toString();
-                    String itemInfo = itemSnapShot.child("info").getValue().toString();
-                    String price = itemSnapShot.child("price").getValue().toString();
-                    double itemPrice = Double.valueOf(price);
+                    String orderPrice = itemSnapShot.child("price").getValue().toString();
+                    String orderStatus = itemSnapShot.child("status").getValue().toString();
+                    String orderAddress = itemSnapShot.child("address").getValue().toString();
+                    String orderDate = itemSnapShot.child("date").getValue().toString();
+                    int orderNumber = itemSnapShot.child("number").getValue(Long.class).intValue();
 
-                    list.add(new Item(itemName, itemBrand, itemPrice, itemInfo));
+                    List<Groceries> orderList = new ArrayList<Groceries>();
+                    for (DataSnapshot ds : itemSnapShot.child("list").getChildren()) {
+                        orderList.add(ds.getValue(Groceries.class));
+                    }
+
+                    list.add(new Order(orderNumber, orderDate, orderStatus, orderPrice, orderAddress, orderList));
                 }
-
-                Collections.sort(list, new ItemsComparator());
+                Collections.sort(list, new OrderComparator());
                 RunnerAssignmentPool adapter = new RunnerAssignmentPool(RunnerAssignmentPoolActivity.this, list);
                 myListViewItems.setAdapter(adapter);
             }
@@ -103,5 +100,5 @@ public class RunnerAssignmentPoolActivity extends AppCompatActivity {
             }
         });
 
-    }*/
+    }
 }
