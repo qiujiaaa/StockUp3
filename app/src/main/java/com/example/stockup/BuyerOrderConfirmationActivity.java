@@ -92,17 +92,19 @@ public class BuyerOrderConfirmationActivity extends Activity {
                 shoppingListDataRef.setValue(map);
 
                 // Create Order object
-                Order order = new Order(count+1, date, status, price, address, list);
-                Order.increaseCount();
+                Order order = new Order(count+1, date, status, price, address, list, user.getDisplayName().substring(1));
 
                 // Add to Orders Pool in Firebase
                 DatabaseReference ordersDataRef = FirebaseDatabase.getInstance().getReference("orders");
-                myRef.setValue(1 + count);
-                ordersDataRef.child("" + count).setValue(order);
+                ordersDataRef.child("" + (count+1)).setValue(order);
 
-                // Add to Orders in user
+                // Add to Orders in runner
                 DatabaseReference orderListDataRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myOrder");
                 orderListDataRef.child("" + (count+1)).setValue(order);
+
+                // Change count
+                DatabaseReference countDataRef = FirebaseDatabase.getInstance().getReference("count");
+                countDataRef.setValue(count + 1);
 
                 Toast.makeText(BuyerOrderConfirmationActivity.this, "Order Submitted", Toast.LENGTH_SHORT).show();
                 Intent goToOrder = new Intent(BuyerOrderConfirmationActivity.this, BuyerOrderActivity.class);

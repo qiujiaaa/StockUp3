@@ -35,8 +35,8 @@ public class RunnerAssignment extends ArrayAdapter<Order> {
 
         final Order order = orders.get(position);
 
-        number.setText("Address #" + order.getNumber());
-        date.setText("Date Accepted: " + order.getDate());
+        number.setText("Assignment #" + order.getNumber());
+        date.setText("Date Accepted: " + order.getStatus().substring(13, 23));
         address.setText("Address: " + order.getAddress());
 
         return listViewItem;

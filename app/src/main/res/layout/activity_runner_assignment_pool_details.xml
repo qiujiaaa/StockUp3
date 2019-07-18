@@ -43,6 +43,16 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/runner_assignment_detail_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="13dp"
+            android:textStyle="bold"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order Summary:"

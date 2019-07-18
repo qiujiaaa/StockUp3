@@ -6,24 +6,24 @@ import java.util.List;
 
 class Order implements Serializable {
 
-    static int count = 1;
-
     int number;
     String date;
     String status;
     String price;
     String address;
     List<Groceries> list;
+    String buyer;
 
     public Order() {}
 
-    public Order(int number, String date, String status, String price, String address, List<Groceries> list) {
+    public Order(int number, String date, String status, String price, String address, List<Groceries> list, String buyer) {
         this.number = number;
         this.date = date;
         this.status = status;
         this.price = price;
         this.address = address;
         this.list = list;
+        this.buyer = buyer;
     }
 
     public int getNumber() {
@@ -46,7 +46,7 @@ class Order implements Serializable {
 
     public List<Groceries> getList() { return list; }
 
-    public static void increaseCount() { count++; }
+    public String getBuyer() { return buyer; }
 
     public void setStatus(String newStatus) {
         status = newStatus;

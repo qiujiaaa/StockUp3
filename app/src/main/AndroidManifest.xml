@@ -18,6 +18,7 @@
         <activity android:name=".Register2Activity" />
         <activity android:name=".BuyerOrderConfirmationActivity" />
         <activity android:name=".RunnerAssignmentActivity" />
+        <activity android:name=".RunnerAssignmentDetailActivity" />
         <activity android:name=".RunnerAssignmentPoolActivity" />
         <activity android:name=".RunnerWalletActivity" />
         <activity android:name=".BuyerAddressActivity" />

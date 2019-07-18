@@ -102,33 +102,6 @@
 
         <LinearLayout
             android:clickable="true"
-            android:id="@+id/directory_Rbookmarks"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingLeft="25dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/directory_bookmarks" />
-
-            <TextView
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="10dp"
-                android:text="@string/directory_bookmarks"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:gravity="end"
-                android:src="@drawable/arrow" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:clickable="true"
             android:id="@+id/directory_completed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -44,9 +44,9 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_runner_assignment);
 
-        dataBaseItems = FirebaseDatabase.getInstance().getReference("items");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        dataBaseItems = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myOrder");
 
         myListViewItems = (ListView) findViewById(R.id.runner_assignment_list);
         myHomeButton = (FloatingActionButton) findViewById(R.id.runner_assignment_button_home);
@@ -60,18 +60,18 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
             }
         });
 
-        /*myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
                 Order chosenOrder = (Order) adapter.getItemAtPosition(position);
-                Intent goToAddPage = new Intent(ItemListActivity.this, BuyerAddItemActivity.class);
-                goToAddPage.putExtra("item", chosenItem);
+                Intent goToAddPage = new Intent(RunnerAssignmentActivity.this, RunnerAssignmentDetailActivity.class);
+                goToAddPage.putExtra("order", chosenOrder);
                 startActivity(goToAddPage);
             }
-        });*/
+        });
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -83,17 +83,20 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
 
                 for (DataSnapshot itemSnapShot: dataSnapshot.getChildren()) {
 
-                    String itemName = itemSnapShot.child("name").getValue().toString();
-                    String itemBrand = itemSnapShot.child("brand").getValue().toString();
-                    String itemInfo = itemSnapShot.child("info").getValue().toString();
-                    String price = itemSnapShot.child("price").getValue().toString();
-                    double itemPrice = Double.valueOf(price);
+                    Order order = itemSnapShot.getValue(Order.class);
+                    list.add(order);
 
-                    list.add(new Item(itemName, itemBrand, itemPrice, itemInfo));
+                    /*int number = itemSnapShot.child("number").getValue(Integer.class);
+                    String date = itemSnapShot.child("date").getValue().toString();
+                    String status = itemSnapShot.child("status").getValue().toString();
+                    String price = itemSnapShot.child("price").getValue().toString();
+                    String address = itemSnapShot.child("address").getValue().toString();
+
+                    list.add(new Item(itemName, itemBrand, itemPrice, itemInfo));*/
                 }
 
-                Collections.sort(list, new ItemsComparator());
-                RunnerAssignmentPool adapter = new RunnerAssignmentPool(RunnerAssignmentPoolActivity.this, list);
+                Collections.sort(list, new OrderComparator());
+                RunnerAssignment adapter = new RunnerAssignment(RunnerAssignmentActivity.this, list);
                 myListViewItems.setAdapter(adapter);
             }
 
@@ -103,5 +106,5 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
             }
         });
 
-    }*/
+    }
 }

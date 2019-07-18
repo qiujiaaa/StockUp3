@@ -81,13 +81,14 @@ public class RunnerAssignmentPoolActivity extends AppCompatActivity {
                     String orderAddress = itemSnapShot.child("address").getValue().toString();
                     String orderDate = itemSnapShot.child("date").getValue().toString();
                     int orderNumber = itemSnapShot.child("number").getValue(Long.class).intValue();
+                    String buyer = itemSnapShot.child("buyer").getValue().toString();
 
                     List<Groceries> orderList = new ArrayList<Groceries>();
                     for (DataSnapshot ds : itemSnapShot.child("list").getChildren()) {
                         orderList.add(ds.getValue(Groceries.class));
                     }
 
-                    list.add(new Order(orderNumber, orderDate, orderStatus, orderPrice, orderAddress, orderList));
+                    list.add(new Order(orderNumber, orderDate, orderStatus, orderPrice, orderAddress, orderList, buyer));
                 }
                 Collections.sort(list, new OrderComparator());
                 RunnerAssignmentPool adapter = new RunnerAssignmentPool(RunnerAssignmentPoolActivity.this, list);

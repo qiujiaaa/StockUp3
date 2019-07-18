@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.Collections;
 import java.util.List;
 
-public class RunnerAssignmentPoolDetailsActivity extends AppCompatActivity {
+public class RunnerAssignmentDetailActivity extends AppCompatActivity {
 
     TextView myTVNum;
     TextView myTVDate;
@@ -47,21 +47,14 @@ public class RunnerAssignmentPoolDetailsActivity extends AppCompatActivity {
         myAddress.setText("Address: " + order.getAddress());
         myStatus.setText("Status: " + order.getStatus());
 
-        myAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToConfirmation = new Intent(RunnerAssignmentPoolDetailsActivity.this, RunnerAssignmentPoolDetailsConfirmationActivity.class);
-                goToConfirmation.putExtra("order", order);
-                startActivity(goToConfirmation);
-            }
-        });
+        myAddButton.hide();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Collections.sort(list, new GroceriesComparator());
-        RunnerAssignmentOrderList adapter = new RunnerAssignmentOrderList(RunnerAssignmentPoolDetailsActivity.this, list);
+        RunnerAssignmentOrderList adapter = new RunnerAssignmentOrderList(RunnerAssignmentDetailActivity.this, list);
         myListView.setAdapter(adapter);
     }
 }
