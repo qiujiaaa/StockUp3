@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyerCompletedOrderConfirmationActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm delivery?"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make sure that you have"
+        android:textStyle="italic"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="received your items!"
+        android:textStyle="italic|bold"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"
+        android:textColor="#ff0c0b"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/buyer_completed_order_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F44336"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

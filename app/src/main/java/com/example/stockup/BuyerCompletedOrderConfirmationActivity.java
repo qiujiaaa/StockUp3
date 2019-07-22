@@ -1,9 +1,8 @@
 package com.example.stockup;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,7 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class RunnerAssignmentDetailConfirmationActivity extends AppCompatActivity {
+public class BuyerCompletedOrderConfirmationActivity extends AppCompatActivity {
+
     Order order;
     Button myConfirmButton;
     FirebaseUser user;
@@ -25,40 +25,42 @@ public class RunnerAssignmentDetailConfirmationActivity extends AppCompatActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_runner_assignment_detail_confirmation);
+        setContentView(R.layout.activity_buyer_completed_order_confirmation);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         Intent myIntent = getIntent();
         order = (Order) myIntent.getSerializableExtra("order");
-        myConfirmButton = (Button) findViewById(R.id.runner_assignment_confirm_button);
+        myConfirmButton = (Button) findViewById(R.id.buyer_completed_order_confirm_button);
 
         myConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                order.setStatus("Delivered on " + date + ". Awaiting confirmation from customer.");
+                order.setStatus("Order Completed");
 
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
 
-                // Add to Orders in runner
+                // Change Orders in buyer
                 userRef.child(user.getDisplayName().substring(1)).child("myOrder").child("" + (order.getNumber())).setValue(order);
 
-                // Change order in buyer
-                userRef.child(order.getBuyer()).child("myOrder").child("" + (order.getNumber())).setValue(order);
+                // Change order in runner
+                userRef.child(order.getRunner()).child("myOrder").child("" + (order.getNumber())).setValue(order);
 
-                // Add notification in buyer
-                String title = "Order " + order.getNumber() + " has been delivered";
-                String detail = "Order delivered on " + date + ". Please proceed to confirm delivery in \"My Orders\".";
+                // Add notification in runner
+                String title = "Order " + order.getNumber() + " has been completed";
+                String detail = "Money added in wallet.";
                 Notification noti = new Notification(title, detail, false);
-                userRef.child(order.getBuyer()).child("myNoti").child(title).setValue(noti);
+                userRef.child(order.getRunner()).child("myNoti").child(title).setValue(noti);
 
-                Toast.makeText(RunnerAssignmentDetailConfirmationActivity.this, "Assignment status updated.", Toast.LENGTH_SHORT).show();
-                Intent goToMyAssignments = new Intent(RunnerAssignmentDetailConfirmationActivity.this, RunnerAssignmentActivity.class);
+                Toast.makeText(BuyerCompletedOrderConfirmationActivity.this, "Assignment status updated.", Toast.LENGTH_SHORT).show();
+                Intent goToMyAssignments = new Intent(BuyerCompletedOrderConfirmationActivity.this, BuyerOrderActivity.class);
 
                 startActivity(goToMyAssignments);
             }
         });
 
     }
+
+
+
 }

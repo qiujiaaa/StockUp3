@@ -82,6 +82,7 @@ public class BuyerOrderActivity extends AppCompatActivity {
                 }
 
                 Collections.sort(list, new OrderComparator());
+                Collections.reverse(list);
                 BuyerOrder adapter = new BuyerOrder(BuyerOrderActivity.this, list);
                 myListView.setAdapter(adapter);
             }

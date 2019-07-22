@@ -45,6 +45,7 @@ public class RunnerAssignmentPoolDetailsConfirmationActivity extends AppCompatAc
             public void onClick(View v) {
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 order.setStatus("Picked up on " + date + ". To be delivered within 48 hours.");
+                order.setRunner(user.getDisplayName().substring(1));
 
                 // Remove from Orders Pool in Firebase
                 DatabaseReference ordersDataRef = FirebaseDatabase.getInstance().getReference("orders");
@@ -57,6 +58,12 @@ public class RunnerAssignmentPoolDetailsConfirmationActivity extends AppCompatAc
 
                 // Change in Orders in buyer
                 userRef.child(order.getBuyer()).child("myOrder").child("" + (order.getNumber())).setValue(order);
+
+                // Add notification in buyer
+                String title = "Order " + order.getNumber() + " has been accepted";
+                String detail = "Order accepted on " + date + ". To be delivered within 48 hours.";
+                Notification noti = new Notification(title, detail, false);
+                userRef.child(order.getBuyer()).child("myNoti").child(title).setValue(noti);
 
                 Toast.makeText(RunnerAssignmentPoolDetailsConfirmationActivity.this, "Added to My Assignments.", Toast.LENGTH_SHORT).show();
                 Intent goToMyAssignments = new Intent(RunnerAssignmentPoolDetailsConfirmationActivity.this, RunnerAssignmentActivity.class);

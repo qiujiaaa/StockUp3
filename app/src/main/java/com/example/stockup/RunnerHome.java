@@ -26,6 +26,7 @@ public class RunnerHome extends AppCompatActivity {
     LinearLayout myWallet;
     LinearLayout mySettings;
     FloatingActionButton myButtonJobPool;
+    FloatingActionButton myButtonNotif;
 
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseRef;
@@ -50,6 +51,7 @@ public class RunnerHome extends AppCompatActivity {
         myWallet = (LinearLayout) findViewById(R.id.directory_Rwallet);
         mySettings = (LinearLayout) findViewById(R.id.directory_Rsettings);
         myButtonJobPool = (FloatingActionButton) findViewById(R.id.button_jobs);
+        myButtonNotif = (FloatingActionButton) findViewById(R.id.runner_notif_button);
 
         myAssignments.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +89,14 @@ public class RunnerHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToPool = new Intent(RunnerHome.this, RunnerAssignmentPoolActivity.class);
                 startActivity(goToPool);
+            }
+        });
+
+        myButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToNotif = new Intent (RunnerHome.this, NotificationActivity.class);
+                startActivity(goToNotif);
             }
         });
     }

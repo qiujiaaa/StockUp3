@@ -56,7 +56,7 @@ public class BuyerGroceries extends ArrayAdapter<Groceries> {
                 grocery.increaseQuantity();
                 map.put(grocery.getName(), grocery);
                 databaseRef.updateChildren(map);
-                Toast.makeText(getContext(), "Added to Shopping List", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
             }
         });
 

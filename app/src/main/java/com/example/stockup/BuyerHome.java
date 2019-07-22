@@ -29,6 +29,7 @@ public class BuyerHome extends AppCompatActivity {
     LinearLayout myAddress;
     LinearLayout mySettings;
     FloatingActionButton myButtonShopping;
+    FloatingActionButton myButtonNotif;
 
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseRef;
@@ -55,6 +56,7 @@ public class BuyerHome extends AppCompatActivity {
         myAddress = (LinearLayout) findViewById(R.id.directory_Baddress);
         mySettings = (LinearLayout) findViewById(R.id.directory_Bsettings);
         myButtonShopping = (FloatingActionButton) findViewById(R.id.button_shopping);
+        myButtonNotif = (FloatingActionButton) findViewById(R.id.buyer_notif_button);
 
         myGroceries.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +102,8 @@ public class BuyerHome extends AppCompatActivity {
         mySettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToSettings = new Intent(BuyerHome.this, EditProfileActivity.class);
+                startActivity(goToSettings);
             }
         });
 
@@ -109,6 +112,14 @@ public class BuyerHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToShopping = new Intent(BuyerHome.this, ItemListActivity.class);
                 startActivity(goToShopping);
+            }
+        });
+
+        myButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToNotif = new Intent(BuyerHome.this, NotificationActivity.class);
+                startActivity(goToNotif);
             }
         });
     }

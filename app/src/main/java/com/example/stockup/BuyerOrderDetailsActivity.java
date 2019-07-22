@@ -1,8 +1,10 @@
 package com.example.stockup;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class BuyerOrderDetailsActivity extends AppCompatActivity {
     TextView myTVPrice;
     TextView myTVFinal;
     ListView myListView;
+    FloatingActionButton myConfirmButton;
 
     List<Groceries> list;
     Order order;
@@ -43,6 +46,20 @@ public class BuyerOrderDetailsActivity extends AppCompatActivity {
         myTVPrice = (TextView) findViewById(R.id.buyer_order_detail_price);
         myTVFinal = (TextView) findViewById(R.id.buyer_order_detail_final_price);
         myListView = (ListView) findViewById(R.id.buyer_order_detail_list_view);
+        myConfirmButton = (FloatingActionButton) findViewById(R.id.buyer_order_button);
+
+        myConfirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToConfirm = new Intent(BuyerOrderDetailsActivity.this, BuyerCompletedOrderConfirmationActivity.class);
+                goToConfirm.putExtra("order", order);
+                startActivity(goToConfirm);
+            }
+        });
+
+        if (!(order.getStatus().contains("confirmation"))) {
+            myConfirmButton.hide();
+        }
 
         myTVNum.setText("Order #" + order.getNumber());
         myTVDate.setText("Date Ordered: " + order.getDate());
@@ -50,6 +67,7 @@ public class BuyerOrderDetailsActivity extends AppCompatActivity {
         double bill = Double.valueOf(order.price.substring(1)) - 3;
         myTVPrice.setText("Total Bill: $" + String.format("%.2f", bill));
         myTVFinal.setText("Amount Paid (+$3 delivery): " + order.getPrice());
+
 
     }
 

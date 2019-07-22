@@ -13,6 +13,7 @@ class Order implements Serializable {
     String address;
     List<Groceries> list;
     String buyer;
+    String runner;
 
     public Order() {}
 
@@ -24,6 +25,7 @@ class Order implements Serializable {
         this.address = address;
         this.list = list;
         this.buyer = buyer;
+        runner = "";
     }
 
     public int getNumber() {
@@ -47,6 +49,10 @@ class Order implements Serializable {
     public List<Groceries> getList() { return list; }
 
     public String getBuyer() { return buyer; }
+
+    public String getRunner() { return runner; }
+
+    public void setRunner(String runner) { this.runner = runner; }
 
     public void setStatus(String newStatus) {
         status = newStatus;
