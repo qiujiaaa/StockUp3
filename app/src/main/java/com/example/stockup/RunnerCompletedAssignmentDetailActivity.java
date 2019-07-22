@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.Collections;
 import java.util.List;
 
-public class RunnerAssignmentDetailActivity extends AppCompatActivity {
+public class RunnerCompletedAssignmentDetailActivity extends AppCompatActivity {
 
     TextView myTVNum;
     TextView myTVDate;
@@ -47,21 +48,14 @@ public class RunnerAssignmentDetailActivity extends AppCompatActivity {
         myAddress.setText("Address: " + order.getAddress());
         myStatus.setText("Status: " + order.getStatus());
 
-        myDeliveredButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToPage = new Intent(RunnerAssignmentDetailActivity.this, RunnerAssignmentDetailConfirmationActivity.class);
-                goToPage.putExtra("order", order);
-                startActivity(goToPage);
-            }
-        });
+        myDeliveredButton.hide();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Collections.sort(list, new GroceriesComparator());
-        RunnerAssignmentOrderList adapter = new RunnerAssignmentOrderList(RunnerAssignmentDetailActivity.this, list);
+        RunnerAssignmentOrderList adapter = new RunnerAssignmentOrderList(RunnerCompletedAssignmentDetailActivity.this, list);
         myListView.setAdapter(adapter);
     }
 }

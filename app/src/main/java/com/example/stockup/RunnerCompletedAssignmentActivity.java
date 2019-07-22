@@ -1,17 +1,12 @@
 package com.example.stockup;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,15 +16,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RunnerAssignmentActivity extends AppCompatActivity {
-
+public class RunnerCompletedAssignmentActivity extends AppCompatActivity {
     DatabaseReference dataBaseItems;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -42,20 +33,20 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_runner_assignment);
+        setContentView(R.layout.activity_runner_completed_assignment);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         dataBaseItems = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myOrder");
 
-        myListViewItems = (ListView) findViewById(R.id.runner_assignment_list);
-        myHomeButton = (FloatingActionButton) findViewById(R.id.runner_assignment_button_home);
+        myListViewItems = (ListView) findViewById(R.id.runner_completed_assignment_list);
+        myHomeButton = (FloatingActionButton) findViewById(R.id.runner_completed_assignment_button_home);
         list = new ArrayList<>();
 
         myHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(RunnerAssignmentActivity.this, RunnerHome.class);
+                Intent goToHome = new Intent(RunnerCompletedAssignmentActivity.this, RunnerHome.class);
                 startActivity(goToHome);
             }
         });
@@ -64,7 +55,7 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
                 Order chosenOrder = (Order) adapter.getItemAtPosition(position);
-                Intent goToAddPage = new Intent(RunnerAssignmentActivity.this, RunnerAssignmentDetailActivity.class);
+                Intent goToAddPage = new Intent(RunnerCompletedAssignmentActivity.this, RunnerCompletedAssignmentDetailActivity.class);
                 goToAddPage.putExtra("order", chosenOrder);
                 startActivity(goToAddPage);
             }
@@ -85,13 +76,13 @@ public class RunnerAssignmentActivity extends AppCompatActivity {
 
                     Order order = itemSnapShot.getValue(Order.class);
 
-                    if (!(order.getStatus().contains("confirmation") || order.getStatus().contains("Completed"))) {
+                    if ((order.status.contains("confirmation") || order.status.contains("Completed"))) {
                         list.add(order);
                     }
                 }
 
                 Collections.sort(list, new OrderComparator());
-                RunnerAssignment adapter = new RunnerAssignment(RunnerAssignmentActivity.this, list);
+                RunnerCompletedAssignment adapter = new RunnerCompletedAssignment(RunnerCompletedAssignmentActivity.this, list);
                 myListViewItems.setAdapter(adapter);
             }
 

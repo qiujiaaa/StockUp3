@@ -1,5 +1,6 @@
 package com.example.stockup;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +38,8 @@ public class BuyerWalletActivity extends AppCompatActivity {
         myLLAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToPage = new Intent(BuyerWalletActivity.this, BuyerWalletChangeActivity.class);
+                startActivity(goToPage);
             }
         });
 

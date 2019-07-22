@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RunnerAssignmentPoolDetailsActivity"
+    tools:context=".RunnerAssignmentDetailActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/runner_assignment_detail_assignment_num"
+            android:id="@+id/runner_assignment_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Assignment #101"
@@ -23,7 +23,7 @@
             android:layout_marginTop="7dp"/>
 
         <TextView
-            android:id="@+id/runner_assignment_detail_date"
+            android:id="@+id/runner_assignment_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date Posted: XX-XX-XXXX"
@@ -33,7 +33,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/runner_assignment_detail_address"
+            android:id="@+id/runner_assignment_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Address: "
@@ -43,7 +43,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/runner_assignment_detail_status"
+            android:id="@+id/runner_assignment_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status: "
@@ -59,19 +59,19 @@
             android:textSize="18sp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="13dp"
-                android:textStyle="bold"/>
+            android:textStyle="bold"/>
 
         <ListView
-            android:id="@+id/runner_assignment_detail_list_view"
+            android:id="@+id/runner_assignment_list_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="477dp"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp">
-        </ListView>
+            android:layout_marginEnd="5dp"></ListView>
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/runner_assignment_order_detail_add_button"
+        android:id="@+id/runner_assignment_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
@@ -81,6 +81,6 @@
         android:layout_marginBottom="28dp"
         android:clickable="true"
         app:backgroundTint="#43e99b"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/tick" />
 
 </RelativeLayout>

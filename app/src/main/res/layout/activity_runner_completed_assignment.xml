@@ -4,32 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RunnerAssignmentPoolActivity">
+    tools:context=".RunnerAssignmentActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Available Assignments"
-            android:textSize="38sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"/>
+            android:text="Completed Assignments"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"/>
 
         <ListView
-            android:id="@+id/runner_assignment_pool"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:layout_marginTop="10dp" />
-
+            android:id="@+id/runner_completed_assignment_list"
+            android:paddingTop="10dp">
+        </ListView>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/runner_assignment_pool_button_home"
+        android:id="@+id/runner_completed_assignment_button_home"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"

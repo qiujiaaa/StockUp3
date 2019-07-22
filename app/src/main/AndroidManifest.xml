@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".RunnerAssignmentPoolDetailsConfirmationActivity"></activity>
+        <activity android:name=".RunnerAssignmentDetailConfirmationActivity"></activity>
+        <activity android:name=".RunnerCompletedAssignmentActivity" />
+        <activity android:name=".RunnerCompletedAssignmentDetailActivity" />
+        <activity android:name=".BuyerAddressChangeActivity" />
+        <activity android:name=".BuyerWalletChangeActivity" />
+        <activity android:name=".RunnerAssignmentPoolDetailsConfirmationActivity" />
         <activity android:name=".RunnerAssignmentPoolDetailsActivity" />
         <activity android:name=".BuyerOrderDetailsActivity" />
         <activity android:name=".Register2Activity" />
