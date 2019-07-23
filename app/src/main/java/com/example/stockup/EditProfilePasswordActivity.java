@@ -22,11 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class EditProfileEmailActivity extends AppCompatActivity {
+public class EditProfilePasswordActivity extends AppCompatActivity {
 
-    TextView myTVEmail;
-    EditText myETNewEmail;
-    EditText myETPassword;
+    EditText myOldPwd;
+    EditText myNewPwd;
+    EditText myNewPwd2;
     Button myButton;
 
     DatabaseReference databaseRef;
@@ -35,23 +35,26 @@ public class EditProfileEmailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_email);
+        setContentView(R.layout.activity_edit_profile_password);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1));
 
-        myTVEmail = (TextView) findViewById(R.id.profile_email);
-        myETNewEmail = (EditText) findViewById(R.id.profile_email_new);
-        myETPassword = (EditText) findViewById(R.id.profile_email_confirm);
-        myButton = (Button) findViewById(R.id.profile_email_button);
+        myOldPwd = (EditText) findViewById(R.id.profile_password_old);
+        myNewPwd = (EditText) findViewById(R.id.profile_password_new);
+        myNewPwd2 = (EditText) findViewById(R.id.profile_password_new_2);
+        myButton = (Button) findViewById(R.id.profile_password_button);
 
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String newEmail = myETNewEmail.getText().toString().trim();
-                final String pwd = myETPassword.getText().toString().trim();
-                if (newEmail.isEmpty()) {
-                    Toast.makeText(EditProfileEmailActivity.this, "Field cannot be blank.", Toast.LENGTH_SHORT).show();
+                final String pwd = myOldPwd.getText().toString().trim();
+                final String pwdN = myNewPwd.getText().toString().trim();
+                final String pwdN2 = myNewPwd2.getText().toString().trim();
+                if (pwd.isEmpty() || pwdN.isEmpty() || pwdN2.isEmpty()) {
+                    Toast.makeText(EditProfilePasswordActivity.this, "Field cannot be blank.", Toast.LENGTH_SHORT).show();
+                } else if (!pwdN.equals(pwdN2)) {
+                    Toast.makeText(EditProfilePasswordActivity.this, "New passwords does not match.", Toast.LENGTH_SHORT).show();
                 } else {
                     AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), pwd);
                     user.reauthenticate(authCredential)
@@ -59,13 +62,12 @@ public class EditProfileEmailActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        user.updateEmail(newEmail);
-                                        databaseRef.child("email").setValue(newEmail);
-                                        Toast.makeText(EditProfileEmailActivity.this, "Email updated.", Toast.LENGTH_SHORT).show();
-                                        Intent goToPage = new Intent(EditProfileEmailActivity.this, EditProfileActivity.class);
-                                        startActivity(goToPage);
+                                        user.updatePassword(pwdN);
+                                        Toast.makeText(EditProfilePasswordActivity.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                                        Intent nextIntent = new Intent(EditProfilePasswordActivity.this, EditProfileActivity.class);
+                                        startActivity(nextIntent);
                                     } else {
-                                        Toast.makeText(EditProfileEmailActivity.this, "Wrong Password.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(EditProfilePasswordActivity.this, "Wrong Password.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -73,21 +75,5 @@ public class EditProfileEmailActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                myTVEmail.setText(dataSnapshot.child("email").getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 }

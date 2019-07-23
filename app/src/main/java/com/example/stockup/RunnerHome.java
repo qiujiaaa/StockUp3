@@ -80,7 +80,8 @@ public class RunnerHome extends AppCompatActivity {
         mySettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent goToSettings = new Intent(RunnerHome.this, EditProfileActivity.class);
+                startActivity(goToSettings);
             }
         });
 
