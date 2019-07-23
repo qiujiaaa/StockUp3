@@ -55,9 +55,9 @@ public class BuyerOrderConfirmationActivity extends Activity {
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                myTextViewAddress.setText(dataSnapshot.child("myAddress").child("real").getValue().toString());
+                myTextViewAddress.setText(dataSnapshot.child("myAddress").getValue().toString());
 
-                String card = dataSnapshot.child("myCard").child("real").getValue().toString().substring(0, 16);
+                String card = dataSnapshot.child("myCard").getValue().toString().substring(0, 16);
                 card = card.substring(0, 4) + "-" + card.substring(4, 8) + "-" + card.substring(8, 12) + "-" + card.substring(12);
                 myTextViewCard.setText(card);
 

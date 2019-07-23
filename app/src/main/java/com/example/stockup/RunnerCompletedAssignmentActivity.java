@@ -76,7 +76,7 @@ public class RunnerCompletedAssignmentActivity extends AppCompatActivity {
 
                     Order order = itemSnapShot.getValue(Order.class);
 
-                    if ((order.status.contains("confirmation") || order.status.contains("Completed"))) {
+                    if (order.status.contains("Completed")) {
                         list.add(order);
                     }
                 }

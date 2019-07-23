@@ -56,7 +56,7 @@ public class BuyerAddressChangeActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         DatabaseReference setCard = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myAddress");
-                                        setCard.child("real").setValue(address);
+                                        setCard.setValue(address);
 
                                         Toast.makeText(BuyerAddressChangeActivity.this, "Address Updated", Toast.LENGTH_SHORT).show();
                                         Intent nextIntent = new Intent(BuyerAddressChangeActivity.this, BuyerAddressActivity.class);

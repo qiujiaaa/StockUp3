@@ -61,9 +61,9 @@ public class Register2Activity extends AppCompatActivity {
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference setCard = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myCard");
-                    setCard.child("real").setValue(card);
+                    setCard.setValue(card);
                     DatabaseReference setAddress = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myAddress");
-                    setAddress.child("real").setValue(address);
+                    setAddress.setValue(address);
 
                     Toast.makeText(Register2Activity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     Intent nextIntent = new Intent(Register2Activity.this, MainActivity.class);

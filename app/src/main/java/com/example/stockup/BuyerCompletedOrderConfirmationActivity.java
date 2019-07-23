@@ -48,7 +48,7 @@ public class BuyerCompletedOrderConfirmationActivity extends AppCompatActivity {
 
                 // Add notification in runner
                 String title = "Order " + order.getNumber() + " has been completed";
-                String detail = "Money added in wallet.";
+                String detail = "Head over to My Wallet to collect payout.";
                 Notification noti = new Notification(title, detail, false);
                 userRef.child(order.getRunner()).child("myNoti").child(title).setValue(noti);
 

@@ -46,7 +46,7 @@ public class BuyerWalletActivity extends AppCompatActivity {
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String card = dataSnapshot.child("real").getValue().toString();
+                String card = dataSnapshot.getValue().toString();
                 card = card.substring(0, 4) + "-" + card.substring(4, 8) + "-" + card.substring(8, 12) + "-" + card.substring(12, 16);
                 myTVCard.setText(card);
             }

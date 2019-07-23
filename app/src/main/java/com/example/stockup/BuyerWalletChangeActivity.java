@@ -83,7 +83,7 @@ public class BuyerWalletChangeActivity extends AppCompatActivity {
 
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         DatabaseReference setCard = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myCard");
-                                        setCard.child("real").setValue(card);
+                                        setCard.setValue(card);
 
                                         Toast.makeText(BuyerWalletChangeActivity.this, "Wallet Updated", Toast.LENGTH_SHORT).show();
                                         Intent nextIntent = new Intent(BuyerWalletChangeActivity.this, BuyerWalletActivity.class);

@@ -10,8 +10,10 @@ public class User {
     String role;
     List<Groceries> myShoppingList;
     List<Groceries> myGroceries;
-    List<String> myCard;
-    List<String> myAddress;
+    String myCard;
+    String myNumber;
+    String myAddress;
+    double myWallet;
     List<Notification> myNoti;
 
     public User() {}
@@ -21,10 +23,9 @@ public class User {
         this.email = email;
         this.role = role;
 
+        myWallet = 0.0;
         myShoppingList = new ArrayList<>();
         myGroceries = new ArrayList<>();
-        myCard = new ArrayList<>();
-        myAddress = new ArrayList<>();
         myNoti = new ArrayList<>();
     }
 
@@ -44,9 +45,13 @@ public class User {
 
     public List<Groceries> getMyGroceries() { return myGroceries; }
 
-    public List<String> getCard() { return myCard; }
+    public double getMyWallet() { return myWallet; }
 
-    public List<String> getMyAddress() { return myAddress; }
+    public String getMyCard() { return myCard; }
+
+    public String getMyNumber() { return myNumber; }
+
+    public String getMyAddress() { return myAddress; }
 
     public List<Notification> getMyNoti() { return myNoti; }
 }

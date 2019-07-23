@@ -73,7 +73,7 @@ public class NotificationActivity extends AppCompatActivity {
                     list.add(new Notification(title, detail, read));
                 }
 
-                Collections.reverse(list);
+                Collections.sort(list, new NotificationComparator());
                 NotificationAdapter adapter = new NotificationAdapter(NotificationActivity.this, list);
                 myListViewItems.setAdapter(adapter);
             }

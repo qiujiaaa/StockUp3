@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Confirm"
         android:layout_marginTop="10dp"
-        android:backgroundTint="#F44336"
+        android:backgroundTint="#ff6968"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
