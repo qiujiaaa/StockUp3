@@ -27,6 +27,12 @@ public class RunnerAssignmentDetailConfirmationActivity extends AppCompatActivit
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_runner_assignment_detail_confirmation);
 
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.3));
+
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         Intent myIntent = getIntent();

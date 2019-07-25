@@ -43,12 +43,20 @@ public class NotificationActivity extends AppCompatActivity {
         myListViewItems = (ListView) findViewById(R.id.notification_list);
         list = new ArrayList<>();
 
+        if (list.isEmpty()) {
+            Toast.makeText(NotificationActivity.this, "No notifications.", Toast.LENGTH_SHORT).show();
+        }
+
         myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {
                 Notification notification = (Notification) adapter.getItemAtPosition(position);
                 notification.update();
                 FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myNoti").child(notification.getTitle()).setValue(notification);
+                if (notification.getDetail().equals("Head over to My Wallet to collect payout.")) {
+                    Intent goToWallet  = new Intent(NotificationActivity.this, RunnerWalletActivity.class);
+                    startActivity(goToWallet);
+                }
             }
         });
 

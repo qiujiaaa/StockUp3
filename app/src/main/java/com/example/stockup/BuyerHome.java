@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,20 +29,21 @@ public class BuyerHome extends AppCompatActivity {
     LinearLayout myWallet;
     LinearLayout myAddress;
     LinearLayout mySettings;
+    LinearLayout myLogout;
     FloatingActionButton myButtonShopping;
     FloatingActionButton myButtonNotif;
+    FloatingActionButton myButtonHaveNotif;
 
-    FirebaseAuth firebaseAuth;
     DatabaseReference databaseRef;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_home);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseRef = FirebaseDatabase.getInstance().getReference().child("users");
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getDisplayName().substring(1));
 
         myTextViewName = (TextView) findViewById(R.id.buyer_name);
 
@@ -55,8 +57,10 @@ public class BuyerHome extends AppCompatActivity {
         myWallet = (LinearLayout) findViewById(R.id.directory_Bwallet);
         myAddress = (LinearLayout) findViewById(R.id.directory_Baddress);
         mySettings = (LinearLayout) findViewById(R.id.directory_Bsettings);
+        myLogout = (LinearLayout) findViewById(R.id.directory_Blogout);
         myButtonShopping = (FloatingActionButton) findViewById(R.id.button_shopping);
         myButtonNotif = (FloatingActionButton) findViewById(R.id.buyer_notif_button);
+        myButtonHaveNotif = (FloatingActionButton) findViewById(R.id.buyer_notif_have_button);
 
         myGroceries.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +111,16 @@ public class BuyerHome extends AppCompatActivity {
             }
         });
 
+        myLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(BuyerHome.this, "Successfully logged out.", Toast.LENGTH_SHORT).show();
+                Intent goToLogin = new Intent(BuyerHome.this, MainActivity.class);
+                startActivity(goToLogin);
+            }
+        });
+
         myButtonShopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +134,44 @@ public class BuyerHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToNotif = new Intent(BuyerHome.this, NotificationActivity.class);
                 startActivity(goToNotif);
+            }
+        });
+
+        myButtonHaveNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToNotif = new Intent(BuyerHome.this, NotificationActivity.class);
+                startActivity(goToNotif);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseRef.child("myNoti").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean hasUnread = false;
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    if (ds.child("isRead").getValue(Boolean.class) == false) {
+                        hasUnread = true;
+                        break;
+                    }
+                }
+                if (hasUnread) {
+                    myButtonNotif.hide();
+                    myButtonHaveNotif.show();
+                } else {
+                    myButtonHaveNotif.hide();
+                    myButtonNotif.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

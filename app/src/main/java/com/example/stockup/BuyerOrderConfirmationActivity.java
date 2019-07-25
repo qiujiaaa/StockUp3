@@ -88,7 +88,7 @@ public class BuyerOrderConfirmationActivity extends Activity {
                 // Empty Shopping List
                 DatabaseReference shoppingListDataRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myShoppingList");
                 HashMap<String, Object> map = new HashMap<>();
-                map.put("0", new Groceries(new Item("", "", 0, ""), 0, ""));
+                map.put("0", new Groceries(new Item("", "", 0, ""), 0));
                 shoppingListDataRef.setValue(map);
 
                 // Create Order object

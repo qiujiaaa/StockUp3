@@ -11,23 +11,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/runner_notif_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            app:backgroundTint="#43e99b"
+            app:srcCompat="@drawable/notification" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/runner_notif_have_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:layout_gravity="right"
+            app:backgroundTint="#43e99b"
+            app:srcCompat="@drawable/notifications_have" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="310dp"
             android:background="#43e99b"
+            android:paddingTop="50dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/runner_notif_button"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="22dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:layout_gravity="end"
-                app:backgroundTint="#43e99b"
-                app:srcCompat="@drawable/notification" />
 
             <TextView
                 android:id="@+id/runner_name"
@@ -157,6 +171,34 @@
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
                 android:text="@string/directory_settings"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:src="@drawable/arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/directory_Rlogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logout" />
+
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:text="Logout"
                 android:textSize="20sp" />
 
             <ImageView

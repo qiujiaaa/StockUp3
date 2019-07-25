@@ -39,13 +39,11 @@ public class BuyerGroceries extends ArrayAdapter<Groceries> {
         TextView name = (TextView) listViewItem.findViewById(R.id.my_groceries_layout_name);
         TextView brand = (TextView) listViewItem.findViewById(R.id.my_groceries_layout_brand);
         Button add = (Button) listViewItem.findViewById(R.id.my_groceries_layout_button_add);
-        TextView usage = (TextView) listViewItem.findViewById(R.id.my_groceries_layout_usage_period);
 
         final Groceries grocery = groceries.get(position);
 
         name.setText(grocery.getName());
         brand.setText(grocery.getBrand());
-        usage.setText(grocery.getUsagePeriod());
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

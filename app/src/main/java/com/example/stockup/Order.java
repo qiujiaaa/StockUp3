@@ -14,6 +14,7 @@ class Order implements Serializable {
     List<Groceries> list;
     String buyer;
     String runner;
+    boolean collected;
 
     public Order() {}
 
@@ -26,6 +27,7 @@ class Order implements Serializable {
         this.list = list;
         this.buyer = buyer;
         runner = "";
+        collected = false;
     }
 
     public int getNumber() {
@@ -51,6 +53,10 @@ class Order implements Serializable {
     public String getBuyer() { return buyer; }
 
     public String getRunner() { return runner; }
+
+    public boolean isCollected() { return collected; }
+
+    public void setCollected() { collected = true; }
 
     public void setRunner(String runner) { this.runner = runner; }
 

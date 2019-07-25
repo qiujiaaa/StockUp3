@@ -6,14 +6,12 @@ public class Groceries implements Serializable {
 
     Item item;
     int quantity;
-    String usagePeriod;
 
     public Groceries() {}
 
-    public Groceries(Item item, int quantity, String usagePeriod) {
+    public Groceries(Item item, int quantity) {
         this.item = item;
         this.quantity = quantity;
-        this.usagePeriod = usagePeriod;
     }
 
     protected Item getItem() {
@@ -23,8 +21,6 @@ public class Groceries implements Serializable {
     protected int getQuantity() {
         return quantity;
     }
-
-    public String getUsagePeriod() { return usagePeriod; }
 
     public String getName() {
         return item.getName();

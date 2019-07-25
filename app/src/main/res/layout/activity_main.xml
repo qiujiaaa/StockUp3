@@ -12,7 +12,8 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/login_icon"/>
+        app:srcCompat="@drawable/shopping_button"
+        android:tint="#fcb1db" />
 
 
     <EditText

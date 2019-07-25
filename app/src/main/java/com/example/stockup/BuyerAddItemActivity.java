@@ -8,7 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class BuyerAddItemActivity extends AppCompatActivity {
 
@@ -20,6 +26,9 @@ public class BuyerAddItemActivity extends AppCompatActivity {
     Button myButtonGroceries;
     Item item;
 
+    FirebaseUser user;
+    DatabaseReference myDataBaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +36,9 @@ public class BuyerAddItemActivity extends AppCompatActivity {
 
         Intent myIntent = getIntent();
         item = (Item) myIntent.getSerializableExtra("item");
+
+        myDataBaseRef = FirebaseDatabase.getInstance().getReference().child("users");
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         myTextViewName = (TextView) findViewById(R.id.add_item_name);
         myTextViewBrand = (TextView) findViewById(R.id.add_item_brand);
@@ -43,9 +55,14 @@ public class BuyerAddItemActivity extends AppCompatActivity {
         myButtonGroceries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToAddGroceries = new Intent(BuyerAddItemActivity.this, BuyerAddToGroceriesActivity.class);
-                goToAddGroceries.putExtra("item", item);
-                startActivity(goToAddGroceries);
+                // Connecting to database
+                String username = user.getDisplayName().substring(1);
+                HashMap<String, Object> map = new HashMap<>();
+                map.put(item.getName(), new Groceries(item, 0));
+                myDataBaseRef.child(username).child("myGroceries").updateChildren(map);
+                Toast.makeText(BuyerAddItemActivity.this, "Added to Bookmarks", Toast.LENGTH_SHORT).show();
+                Intent goBack = new Intent(BuyerAddItemActivity.this, ItemListActivity.class);
+                startActivity(goBack);
             }
         });
 

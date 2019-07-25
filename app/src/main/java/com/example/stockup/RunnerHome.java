@@ -25,10 +25,12 @@ public class RunnerHome extends AppCompatActivity {
     LinearLayout myCompleted;
     LinearLayout myWallet;
     LinearLayout mySettings;
+    LinearLayout myLogout;
     FloatingActionButton myButtonJobPool;
     FloatingActionButton myButtonNotif;
+    FloatingActionButton myButtonHaveNotif;
 
-    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
     DatabaseReference databaseRef;
 
     @Override
@@ -36,9 +38,8 @@ public class RunnerHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_runner_home);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseRef = FirebaseDatabase.getInstance().getReference().child("users");
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getDisplayName().substring(1));
 
         myTextViewName = (TextView) findViewById(R.id.runner_name);
         final String theEmail = user.getEmail();
@@ -50,8 +51,10 @@ public class RunnerHome extends AppCompatActivity {
         myCompleted = (LinearLayout) findViewById(R.id.directory_completed);
         myWallet = (LinearLayout) findViewById(R.id.directory_Rwallet);
         mySettings = (LinearLayout) findViewById(R.id.directory_Rsettings);
+        myLogout = (LinearLayout) findViewById(R.id.directory_Rlogout);
         myButtonJobPool = (FloatingActionButton) findViewById(R.id.button_jobs);
         myButtonNotif = (FloatingActionButton) findViewById(R.id.runner_notif_button);
+        myButtonHaveNotif = (FloatingActionButton) findViewById(R.id.runner_notif_have_button);
 
         myAssignments.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +88,16 @@ public class RunnerHome extends AppCompatActivity {
             }
         });
 
+        myLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(RunnerHome.this, "Successfully logged out.", Toast.LENGTH_SHORT).show();
+                Intent goToLogin = new Intent(RunnerHome.this, MainActivity.class);
+                startActivity(goToLogin);
+            }
+        });
+
         myButtonJobPool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +111,44 @@ public class RunnerHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToNotif = new Intent (RunnerHome.this, NotificationActivity.class);
                 startActivity(goToNotif);
+            }
+        });
+
+        myButtonHaveNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToNotif = new Intent (RunnerHome.this, NotificationActivity.class);
+                startActivity(goToNotif);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseRef.child("myNoti").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean hasUnread = false;
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    if (ds.child("isRead").getValue(Boolean.class) == false) {
+                        hasUnread = true;
+                        break;
+                    }
+                }
+                if (hasUnread) {
+                    myButtonNotif.hide();
+                    myButtonHaveNotif.show();
+                } else {
+                    myButtonNotif.show();
+                    myButtonHaveNotif.hide();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

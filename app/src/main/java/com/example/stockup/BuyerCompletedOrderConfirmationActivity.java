@@ -3,6 +3,7 @@ package com.example.stockup;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,6 +28,12 @@ public class BuyerCompletedOrderConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_completed_order_confirmation);
 
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        getWindow().setLayout((int) (width * 0.75), (int) (height * 0.25));
+
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         Intent myIntent = getIntent();
@@ -36,7 +43,7 @@ public class BuyerCompletedOrderConfirmationActivity extends AppCompatActivity {
         myConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order.setStatus("Order Completed");
+                order.setStatus(order.getStatus().substring(0, 23));
 
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
 

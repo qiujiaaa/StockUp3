@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Register3Activity"></activity>
+        <activity android:name=".RunnerWalletCollectActivity"></activity>
+        <activity android:name=".RunnerWalletWithdrawActivity" />
+        <activity android:name=".RunnerWalletChangeActivity" />
+        <activity android:name=".Register3Activity" />
         <activity android:name=".EditProfilePasswordActivity" />
         <activity android:name=".EditProfileEmailActivity" />
         <activity android:name=".EditProfileActivity" />
@@ -35,7 +38,6 @@
         <activity android:name=".BuyerAddressActivity" />
         <activity android:name=".BuyerOrderActivity" />
         <activity android:name=".BuyerAddToShoppingListActivity" />
-        <activity android:name=".BuyerAddToGroceriesActivity" />
         <activity android:name=".BuyerGroceriesActivity" />
         <activity android:name=".BuyerAddItemActivity" />
         <activity android:name=".BuyerShoppingList" />

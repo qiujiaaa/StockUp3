@@ -2,6 +2,7 @@ package com.example.stockup;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,8 @@ public class BuyerWalletActivity extends AppCompatActivity {
 
     LinearLayout myLLAdd;
     TextView myTVCard;
+    FloatingActionButton myButtonHome;
+
     DatabaseReference databaseRef;
 
     @Override
@@ -34,6 +37,7 @@ public class BuyerWalletActivity extends AppCompatActivity {
 
         myLLAdd = (LinearLayout) findViewById(R.id.Bpayment_add);
         myTVCard = (TextView) findViewById(R.id.Bpayment_card);
+        myButtonHome = (FloatingActionButton) findViewById(R.id.Bpayment_home_button);
 
         myLLAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,14 @@ public class BuyerWalletActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        myButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToHome = new Intent(BuyerWalletActivity.this, BuyerHome.class);
+                startActivity(goToHome);
             }
         });
     }

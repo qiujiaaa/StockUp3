@@ -62,7 +62,7 @@ public class BuyerWalletChangeActivity extends AppCompatActivity {
                 cvc = myCardCVC.getText().toString().trim();
                 password = myPassword.getText().toString().trim();
 
-                if (num.isEmpty() | month.isEmpty() || year.isEmpty() || cvc.isEmpty()) {
+                if (num.isEmpty() || month.isEmpty() || year.isEmpty() || cvc.isEmpty()) {
                     Toast.makeText(BuyerWalletChangeActivity.this, "Fill in ALL the blanks.", Toast.LENGTH_SHORT).show();
                 } else if (num.length() != 16) {
                     Toast.makeText(BuyerWalletChangeActivity.this, "Invalid card number.", Toast.LENGTH_SHORT).show();
