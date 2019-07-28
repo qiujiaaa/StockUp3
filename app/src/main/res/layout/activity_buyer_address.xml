@@ -28,6 +28,16 @@
             android:layout_height="0dp"
             android:src="@drawable/home"/>
 
+        <TextView
+            android:id="@+id/Baddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="XXXXXXXX"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"

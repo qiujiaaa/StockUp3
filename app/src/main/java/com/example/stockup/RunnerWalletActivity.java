@@ -23,12 +23,14 @@ import org.w3c.dom.Text;
 public class RunnerWalletActivity extends AppCompatActivity {
 
     TextView myTextViewBalance;
+    TextView myTextViewNumber;
     LinearLayout myLLCollect;
     LinearLayout myLLWithdraw;
     LinearLayout myLLManage;
     FloatingActionButton myButtonHome;
 
     FirebaseUser user;
+    DatabaseReference databaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,28 @@ public class RunnerWalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_runner_wallet);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseRef = FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myNumber");
 
         myTextViewBalance = (TextView) findViewById(R.id.Rwallet_balance);
+        myTextViewNumber = (TextView) findViewById(R.id.Rwallet_number);
         myLLCollect = (LinearLayout) findViewById(R.id.Rwallet_collect);
         myLLWithdraw = (LinearLayout) findViewById(R.id.Rwallet_withdraw);
         myLLManage = (LinearLayout) findViewById(R.id.Rwallet_manage);
         myButtonHome = (FloatingActionButton) findViewById(R.id.Rwallet_home_button);
+
+        databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String num = dataSnapshot.getValue().toString();
+                num = num.substring(0, 4) + " " + num.substring(4);
+                myTextViewNumber.setText(num);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         myButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
