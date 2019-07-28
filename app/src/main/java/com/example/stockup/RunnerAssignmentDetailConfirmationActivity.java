@@ -60,7 +60,7 @@ public class RunnerAssignmentDetailConfirmationActivity extends AppCompatActivit
                 userRef.child(order.getBuyer()).child("myNoti").child(title).setValue(noti);
 
                 Toast.makeText(RunnerAssignmentDetailConfirmationActivity.this, "Assignment status updated.", Toast.LENGTH_SHORT).show();
-                Intent goToMyAssignments = new Intent(RunnerAssignmentDetailConfirmationActivity.this, RunnerAssignmentActivity.class);
+                Intent goToMyAssignments = new Intent(RunnerAssignmentDetailConfirmationActivity.this, RunnerCompletedAssignmentActivity.class);
 
                 startActivity(goToMyAssignments);
             }

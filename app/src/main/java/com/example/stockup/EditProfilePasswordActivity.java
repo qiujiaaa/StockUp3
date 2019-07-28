@@ -54,7 +54,7 @@ public class EditProfilePasswordActivity extends AppCompatActivity {
                 if (pwd.isEmpty() || pwdN.isEmpty() || pwdN2.isEmpty()) {
                     Toast.makeText(EditProfilePasswordActivity.this, "Field cannot be blank.", Toast.LENGTH_SHORT).show();
                 } else if (!pwdN.equals(pwdN2)) {
-                    Toast.makeText(EditProfilePasswordActivity.this, "New passwords does not match.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfilePasswordActivity.this, "New passwords do not match.", Toast.LENGTH_SHORT).show();
                 } else {
                     AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), pwd);
                     user.reauthenticate(authCredential)
