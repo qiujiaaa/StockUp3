@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToHome);
 
                 } else {
-                    Toast.makeText(MainActivity.this, "Wrong username or password. Try Again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Wrong email or password. Try Again.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
