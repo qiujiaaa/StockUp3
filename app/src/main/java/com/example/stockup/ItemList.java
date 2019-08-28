@@ -36,7 +36,7 @@ public class ItemList extends ArrayAdapter<Item> {
 
         itemNameTextView.setText(item.getName());
         itemBrandTextView.setText(item.getBrand());
-        itemPriceTextView.setText("$" + item.getPrice());
+        itemPriceTextView.setText("$" + String.format("%.2f", item.getPrice()));
 
         return listViewItem;
     }

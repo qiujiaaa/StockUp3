@@ -55,7 +55,7 @@ public class RunnerAssignmentDetailConfirmationActivity extends AppCompatActivit
 
                 // Add notification in buyer
                 String title = "Order " + order.getNumber() + " has been delivered";
-                String detail = "Order delivered on " + date + ". Please proceed to confirm delivery in \"My Orders\".";
+                String detail = "Order delivered on " + date + ". Please proceed to confirm delivery in \"Orders\".";
                 Notification noti = new Notification(title, detail, false);
                 userRef.child(order.getBuyer()).child("myNoti").child(title).setValue(noti);
 

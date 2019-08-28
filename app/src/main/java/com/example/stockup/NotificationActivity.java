@@ -43,10 +43,6 @@ public class NotificationActivity extends AppCompatActivity {
         myListViewItems = (ListView) findViewById(R.id.notification_list);
         list = new ArrayList<>();
 
-        if (list.isEmpty()) {
-            Toast.makeText(NotificationActivity.this, "No notifications.", Toast.LENGTH_SHORT).show();
-        }
-
         myListViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapter, View view, int position, final long id) {

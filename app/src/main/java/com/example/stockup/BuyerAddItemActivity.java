@@ -49,7 +49,7 @@ public class BuyerAddItemActivity extends AppCompatActivity {
 
         myTextViewName.setText(item.getName());
         myTextViewBrand.setText(item.getBrand());
-        myTextViewPrice.setText("$" + item.getPrice());
+        myTextViewPrice.setText("$" + String.format("%.2f", item.getPrice()));
         myTextViewInfo.setText(item.getAddInfo());
 
         myButtonGroceries.setOnClickListener(new View.OnClickListener() {

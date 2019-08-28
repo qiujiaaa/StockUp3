@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="4">
+            android:layout_weight="3.7">
 
             <TextView
                 android:id="@+id/order_detail_item_name"
@@ -44,7 +44,7 @@
             android:id="@+id/order_detail_item_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:text="$XX.XX"
             android:gravity="left"
             android:layout_gravity="center_horizontal"

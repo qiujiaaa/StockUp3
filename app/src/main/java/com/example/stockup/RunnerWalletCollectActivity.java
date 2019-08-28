@@ -59,7 +59,12 @@ public class RunnerWalletCollectActivity extends AppCompatActivity {
 
                 money += 3.00 * count;
                 FirebaseDatabase.getInstance().getReference("users").child(user.getDisplayName().substring(1)).child("myWallet").setValue(money);
-                Toast.makeText(RunnerWalletCollectActivity.this, "Payout Collected", Toast.LENGTH_SHORT).show();
+
+                if (count == 0) {
+                    Toast.makeText(RunnerWalletCollectActivity.this, "No payout available.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RunnerWalletCollectActivity.this, "Payout collected", Toast.LENGTH_SHORT).show();
+                }
                 Intent goToWallet = new Intent(RunnerWalletCollectActivity.this, RunnerWalletActivity.class);
                 startActivity(goToWallet);
             }
